@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huy Hoàng &amp; Gia Như — A Love Story</title>
+<meta name="description" content="Huy Hoàng & Gia Như · Chủ Nhật 13.12.2026 · Luxury Palace · Sảnh Platinum">
+<meta property="og:title" content="Huy Hoàng & Gia Như — A Love Story">
+<meta property="og:description" content="Chủ Nhật · 13.12.2026 · Luxury Palace">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --film-bg:#0a0806;
+    --film-cream:#e8dcc4;
+    --film-warm:#c9a876;
+    --film-red:#8b3a2a;
+    --film-shadow:#1a1410;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--film-bg);
+    color:var(--film-cream);
+    font-family:'Fraunces', serif;
+    overflow-x:hidden;
+    cursor: crosshair;
+  }
+  ::selection{background:var(--film-warm); color:var(--film-bg)}
+
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:.18;
+    mix-blend-mode: overlay;
+    pointer-events:none;
+    z-index:9999;
+    animation: grain 0.6s steps(4) infinite;
+  }
+  @keyframes grain{
+    0%,100%{transform:translate(0,0)}
+    25%{transform:translate(-2%,1%)}
+    50%{transform:translate(1%,-2%)}
+    75%{transform:translate(-1%,2%)}
+  }
+
+  .letterbox-top, .letterbox-bot{
+    position:fixed; left:0; right:0;
+    height: 8vh;
+    background: var(--film-bg);
+    z-index: 9998;
+    transition: height 1.2s cubic-bezier(.77,0,.18,1);
+  }
+  .letterbox-top{top:0; border-bottom:1px solid rgba(232,220,196,.08)}
+  .letterbox-bot{bottom:0; border-top:1px solid rgba(232,220,196,.08)}
+  .letterbox-top.intro, .letterbox-bot.intro{height:50vh}
+
+  .meta-top{
+    position:fixed; top:0; left:0; right:0;
+    height:8vh;
+    z-index: 9999;
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 0 32px;
+    font-family:'Archivo', sans-serif;
+    font-size: 10px;
+    letter-spacing:.2em;
+    color: rgba(232,220,196,.5);
+    text-transform:uppercase;
+    pointer-events:none;
+  }
+  .meta-top .left, .meta-top .right{display:flex; gap:24px; align-items:center}
+  .meta-top .dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--film-red);
+    animation: rec 1.2s ease-in-out infinite;
+  }
+  @keyframes rec{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .meta-bot{
+    position:fixed; bottom:0; left:0; right:0;
+    height:8vh;
+    z-index: 9999;
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 0 32px;
+    font-family:'Archivo', sans-serif;
+    font-size: 10px;
+    letter-spacing:.2em;
+    color: rgba(232,220,196,.5);
+    text-transform:uppercase;
+    pointer-events:none;
+  }
+
+  .scene{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .scene-img{
+    position:absolute; inset:0;
+    background-size:cover;
+    background-position:center;
+    filter: contrast(1.05) saturate(.85) sepia(.18) brightness(.92);
+    transform: scale(1.12);
+    will-change: transform;
+  }
+  .scene::after{
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(10,8,6,.55) 100%);
+    z-index:1;
+  }
+  .scene-overlay{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding: 0 24px;
+    max-width: 1100px;
+  }
+
+  /* ô ảnh chưa có ảnh */
+  .ph-empty{background:radial-gradient(ellipse at 50% 40%, #2a2219 0%, #120e0a 70%) !important}
+  .hero-scene .ph-empty::before{display:none}
+  .ph-empty::before{
+    content:attr(data-label);
+    position:absolute; left:0; right:0; top:46%;
+    text-align:center;
+    font-family:'Archivo',sans-serif; font-size:10px; letter-spacing:.4em; text-transform:uppercase;
+    color:rgba(201,168,118,.35);
+  }
+  img.ph-img{background:radial-gradient(ellipse at 50% 40%, #2a2219 0%, #120e0a 70%)}
+
+  .scene-open{background: var(--film-bg)}
+  .scene-open .scene-overlay{opacity:0; animation: fadeIn 2s ease 1.2s forwards}
+  .scene-open .studio{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
+    color: rgba(232,220,196,.6);
+    margin-bottom: 60px;
+  }
+  .scene-open .presents{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px; letter-spacing:.4em;
+    color: var(--film-warm);
+    margin-bottom: 80px;
+    opacity:.8;
+  }
+  .scene-open .duration{
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.3em;
+    color: rgba(232,220,196,.4);
+    margin-top: 60px;
+  }
+  @keyframes fadeIn{to{opacity:1}}
+
+  .hero-scene{background:#120e0a}
+  .hero-scene .scene-img{filter: contrast(1.05) saturate(.9) sepia(.12) brightness(.6); transform:none}
+  .hero-scene::after{display:none}
+  .hero-title{text-align:center; color: var(--film-cream); position:relative; z-index:2; padding:0 12px}
+  .hero-loc{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
+    opacity:.8;
+    margin-bottom: 60px;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid rgba(232,220,196,.3);
+  }
+  /* tên dâu rể chung một hàng */
+  .hero-line{display:block; white-space:nowrap}
+  .hero-name{
+    font-family:'Fraunces', serif;
+    font-size: clamp(28px, 7.8vw, 140px);
+    line-height: .9;
+    font-weight:700;
+    letter-spacing: -.02em;
+    display:inline;
+  }
+  .hero-name .char{
+    display:inline-block;
+    opacity:0;
+    transform: translateY(80px);
+    animation: charUp 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .hero-amp{
+    font-family: 'Fraunces', serif;
+    font-weight:900;
+    font-style: italic;
+    font-size: clamp(24px, 6.2vw, 110px);
+    color: var(--film-warm);
+    margin: 0 .18em;
+    display:inline-block;
+    opacity:0;
+    animation: fadeIn 1.4s ease 1.6s forwards;
+  }
+  @keyframes charUp{to{opacity:1; transform:translateY(0)}}
+  .hero-subtitle{
+    margin-top: 60px;
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.4vw, 20px);
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    opacity:0;
+    animation: fadeIn 1.4s ease 3.2s forwards;
+  }
+
+  .subtitle{
+    position:absolute;
+    bottom: 12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80%, 800px);
+    text-align:center;
+    z-index:3;
+    color: #fff;
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(20px, 2.2vw, 30px);
+    line-height:1.4;
+    text-shadow: 0 3px 16px rgba(0,0,0,.95), 0 1px 4px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1);
+    letter-spacing:.01em;
+  }
+  .subtitle .speaker{
+    display:block;
+    font-family:'Archivo', sans-serif;
+    font-style:normal;
+    font-weight: 700;
+    font-size: 13px; letter-spacing:.4em; text-transform:uppercase;
+    color: #f3d4b0;
+    margin-bottom: 12px;
+    opacity:1;
+    text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 2px rgba(0,0,0,1);
+  }
+  /* dòng tiếng Anh song ngữ */
+  .en{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size: .62em;
+    letter-spacing:.02em;
+    color: rgba(232,220,196,.72);
+    margin-top: 10px;
+  }
+
+  .chapter-label{
+    position:absolute;
+    top: 12vh;
+    left: 32px;
+    z-index:3;
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.4em; text-transform:uppercase;
+    color: rgba(232,220,196,.7);
+  }
+
+  .scene-dual{
+    height:100vh;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--film-bg);
+    position:relative;
+    overflow:hidden;
+  }
+  .scene-dual .panel{position:relative; overflow:hidden; height:100%}
+  .scene-dual .panel img{
+    width:100%; height:100%; object-fit:cover;
+    filter: contrast(1.05) saturate(.85) sepia(.15) brightness(.85);
+    transition: transform 6s ease-out, filter .8s ease;
+  }
+  .scene-dual .panel:hover img{filter: contrast(1.05) saturate(1) sepia(.05) brightness(1)}
+  .scene-dual.active .panel img{transform: scale(1.05)}
+  .scene-dual .panel .name-overlay{
+    position:absolute;
+    bottom: 24px;
+    left: 32px;
+    right: 32px;
+    color: var(--film-cream);
+    z-index:2;
+  }
+  .scene-dual .panel::after{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,8,6,.75) 100%);
+    z-index:1;
+  }
+  .scene-dual .panel .role{
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.4em; text-transform:uppercase;
+    color: var(--film-warm);
+    margin-bottom: 12px;
+  }
+  .scene-dual .panel .pname{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1;
+    letter-spacing: -.01em;
+    color: #fff;
+    white-space:nowrap;
+    text-shadow: 0 2px 14px rgba(0,0,0,.95), 0 1px 3px rgba(0,0,0,1);
+  }
+  .scene-dual .panel .pname em{
+    font-family:'Fraunces', serif;
+    font-style: normal;
+    color: #fff;
+    font-weight: inherit;
+  }
+  .scene-dual .panel .parent{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size: 15px;
+    margin-top: 16px;
+    opacity:.85;
+    letter-spacing:.05em;
+  }
+  .scene-dual .panel .parent .en{font-size:13px; margin-top:4px}
+  .vs-mark{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    z-index:1;
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-style: italic;
+    font-size: 64px;
+    color: var(--film-warm);
+    background: var(--film-bg);
+    width: 84px; height:84px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 60px rgba(10,8,6,.8);
+  }
+  @media(max-width:768px){
+    .scene-dual{grid-template-columns: 1fr; grid-template-rows: auto auto; height:auto}
+    .scene-dual .panel{aspect-ratio: 3/4; height:auto}
+    .scene-dual .panel img{object-position: center 20%}
+    .scene-dual .panel::after{background: linear-gradient(180deg, transparent 55%, rgba(10,8,6,.92) 100%)}
+    .scene-dual .panel .name-overlay{bottom: 24px; left: 20px; right: 20px}
+    .vs-mark{top:50%; transform: translate(-50%,-50%); font-size:40px; width:58px; height:58px; z-index:1}
+  }
+
+  .intermission{
+    background: var(--film-bg);
+    min-height:90vh;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding: 16vh 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .intermission::before{
+    content:'';
+    position:absolute;
+    top:0; left:50%;
+    width:1px; height:14vh;
+    background:linear-gradient(var(--film-warm), transparent);
+    opacity:.4;
+  }
+  .intermission::after{
+    content:'';
+    position:absolute;
+    bottom:0; left:50%;
+    width:1px; height:14vh;
+    background:linear-gradient(transparent, var(--film-warm));
+    opacity:.4;
+  }
+  .intermission .num-big{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-style: italic;
+    font-size: clamp(120px, 20vw, 280px);
+    color: var(--film-warm);
+    line-height: 1;
+    opacity:0;
+    transform: scale(.7);
+    transition: all 1.6s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+    z-index:2;
+    text-shadow: 0 0 80px rgba(201,168,118,.25);
+  }
+  .intermission .num-big::after{
+    content: attr(data-rom);
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%) scale(2.6);
+    font-size: inherit;
+    color: var(--film-warm);
+    opacity:.05;
+    z-index:-1;
+    white-space:nowrap;
+    pointer-events:none;
+  }
+  .intermission.active .num-big{opacity:.95; transform: scale(1)}
+  .intermission .label{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.6em; text-transform:uppercase;
+    color: rgba(232,220,196,.5);
+    margin-top: 40px;
+    opacity:0;
+    transition: opacity 1.4s ease .6s;
+    position:relative; z-index:2;
+  }
+  .intermission .label::before,
+  .intermission .label::after{
+    content:'';
+    display:inline-block;
+    width:32px; height:1px;
+    background:var(--film-warm);
+    opacity:.5;
+    vertical-align:middle;
+    margin:0 16px;
+  }
+  .intermission.active .label{opacity:1}
+  .intermission .quote{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2vw, 28px);
+    color: var(--film-cream);
+    max-width: 720px;
+    margin-top: 60px;
+    line-height: 1.5;
+    opacity:0;
+    transition: opacity 1.4s ease .9s;
+  }
+  .intermission.active .quote{opacity:.9}
+
+  .credits{
+    background: var(--film-bg);
+    min-height: 100vh;
+    padding: 18vh 32px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .credits-head{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
+    color: rgba(232,220,196,.5);
+    margin-bottom: 60px;
+  }
+  .credits-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px 100px;
+    max-width: 1000px;
+    width:100%;
+  }
+  .credit-block{
+    text-align:center;
+    border-top: 1px solid rgba(232,220,196,.15);
+    padding-top: 40px;
+  }
+  .credit-block .role{
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.4em; text-transform:uppercase;
+    color: var(--film-warm);
+    margin-bottom: 20px;
+  }
+  .credit-block h3{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: clamp(32px, 3vw, 44px);
+    color: var(--film-cream);
+    margin-bottom: 6px;
+    letter-spacing: -.01em;
+  }
+  .credit-block h3 + .en{font-size:16px; margin:0 0 18px}
+  .credit-block .time{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--film-cream);
+    opacity:.8;
+    margin-bottom: 20px;
+  }
+  .credit-block .place{
+    font-family:'Fraunces', serif;
+    font-size: 16px;
+    color: var(--film-cream);
+    opacity:.7;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .credit-block .sub-note{
+    font-family:'Archivo', sans-serif;
+    font-size: 10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color: var(--film-warm);
+    opacity:.7;
+    margin-top: 14px;
+  }
+  @media(max-width:768px){
+    .credits-grid{grid-template-columns: 1fr; gap: 60px}
+  }
+
+  .reel-countdown{
+    background: var(--film-bg);
+    padding: 18vh 32px;
+    text-align:center;
+  }
+  .reel-countdown .head{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
+    color: var(--film-warm);
+    margin-bottom: 24px;
+  }
+  .reel-countdown h2{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(40px, 5vw, 72px);
+    color: var(--film-cream);
+    margin-bottom: 80px;
+    font-weight: 400;
+  }
+  .reel-countdown h2 .en{font-size:.4em; margin-top:14px}
+  .reel-numbers{
+    display:flex; justify-content:center; gap: clamp(24px, 5vw, 80px);
+    flex-wrap: wrap;
+  }
+  .reel-num{
+    text-align:center; min-width: 100px;
+    padding: 24px 18px 18px;
+    border: 1px solid rgba(201,168,118,.18);
+    position:relative;
+    background: linear-gradient(180deg, rgba(201,168,118,.04), transparent);
+  }
+  .reel-num::before, .reel-num::after{
+    content:'';
+    position:absolute;
+    width:10px; height:10px;
+    border:1px solid var(--film-warm);
+    opacity:.5;
+  }
+  .reel-num::before{top:-1px; left:-1px; border-right:none; border-bottom:none}
+  .reel-num::after{bottom:-1px; right:-1px; border-left:none; border-top:none}
+  .reel-num .n{
+    font-family:'Fraunces', serif;
+    font-size: clamp(70px, 9vw, 120px);
+    color: var(--film-warm);
+    line-height: 1;
+    font-weight: 400;
+    display:block;
+    text-shadow: 0 0 40px rgba(201,168,118,.2);
+  }
+  .reel-num .u{
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.4em; text-transform:uppercase;
+    color: rgba(232,220,196,.5);
+    margin-top: 20px;
+    display:block;
+  }
+
+  .gift-scene{
+    background: var(--film-bg);
+    padding: 18vh 32px;
+    text-align:center;
+  }
+  .gift-scene .head{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
+    color: var(--film-warm);
+    margin-bottom: 24px;
+  }
+  .gift-scene h2{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--film-cream);
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+  .gift-scene h2 em, .wish-scene h2 em{ font-style:italic; color: var(--film-warm) }
+  .gift-scene .desc{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--film-cream);
+    opacity:.7;
+    max-width: 540px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+  }
+  .gift-scene .desc .en, .wish-scene .desc .en{font-size:15px}
+  /* QR bấm mới hiện */
+  .reveal-qr{
+    display:inline-flex; flex-direction:column; align-items:center; gap:14px;
+    cursor:pointer; background:transparent; border:1px solid rgba(201,168,118,.45);
+    color:var(--film-warm); padding:28px 34px;
+    font-family:'Archivo', sans-serif; font-size:11px; letter-spacing:.3em; text-transform:uppercase;
+    transition: all .4s ease; position:relative;
+  }
+  .reveal-qr:hover{background:rgba(201,168,118,.08)}
+  .reveal-qr .ic{
+    width:64px; height:64px; border-radius:50%;
+    border:1px solid var(--film-warm);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-style:italic; font-size:26px; letter-spacing:0;
+    animation: pulseRing 2.2s ease-in-out infinite;
+  }
+  .reveal-qr small{font-family:'Fraunces',serif; font-style:italic; text-transform:none; letter-spacing:.04em; font-size:14px; color:rgba(232,220,196,.6)}
+  @keyframes pulseRing{0%,100%{box-shadow:0 0 0 0 rgba(201,168,118,.45)}50%{box-shadow:0 0 0 14px rgba(201,168,118,0)}}
+  .qr-wrap{display:none; flex-direction:column; align-items:center}
+  .gift-scene.open .reveal-qr{display:none}
+  .gift-scene.open .qr-wrap{display:flex; animation: qrIn 1s cubic-bezier(.2,.8,.2,1)}
+  @keyframes qrIn{from{opacity:0; transform:translateY(30px) scale(.94)} to{opacity:1; transform:none}}
+  .qr-frame{
+    display:inline-block;
+    padding: 16px;
+    background: var(--film-cream);
+    border: 1px solid var(--film-warm);
+    position:relative;
+  }
+  .qr-frame::before, .qr-frame::after{
+    content:''; position:absolute;
+    width: 20px; height: 20px;
+    border: 1px solid var(--film-warm);
+  }
+  .qr-frame::before{top:-6px; left:-6px; border-right:none; border-bottom:none}
+  .qr-frame::after{bottom:-6px; right:-6px; border-left:none; border-top:none}
+  .qr-frame svg{width: 200px; height: 200px; display:block}
+  .qr-name{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size: 24px;
+    color: var(--film-warm);
+    margin-top: 24px;
+  }
+  .qr-stk{
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.3em;
+    color: rgba(232,220,196,.6);
+    margin-top: 10px;
+  }
+  .copy-stk{
+    margin-top: 22px;
+    display:inline-flex; align-items:center; gap:10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgba(201,168,118,.45);
+    color: var(--film-warm);
+    font-family:'Archivo', sans-serif;
+    font-size: 11px; letter-spacing:.2em; text-transform:uppercase;
+    padding: 12px 22px;
+    transition: all .3s ease;
+  }
+  .copy-stk:hover{ background: rgba(201,168,118,.1); border-color: var(--film-warm) }
+  .copy-stk svg{ width:14px; height:14px; stroke: var(--film-warm); fill:none; stroke-width:1.5 }
+  .copy-stk.copied{ color: var(--film-cream); border-color: var(--film-cream) }
+  .copy-stk.copied svg{ stroke: var(--film-cream) }
+
+  .map-link{
+    display:inline-flex; align-items:center; gap:8px;
+    margin-top: 16px;
+    text-decoration:none;
+    color: var(--film-warm);
+    font-family:'Archivo', sans-serif;
+    font-size: 10px; letter-spacing:.25em; text-transform:uppercase;
+    border-bottom: 1px solid rgba(201,168,118,.4);
+    padding-bottom: 4px;
+    transition: all .3s ease;
+  }
+  .map-link:hover{ color: var(--film-cream); border-color: var(--film-cream) }
+  .map-link svg{ width:13px; height:13px; stroke: currentColor; fill:none; stroke-width:1.5 }
+
+  /* ===== Wishes / Lời chúc + bình chọn tham dự ===== */
+  .wish-scene{ background: var(--film-shadow); padding: 16vh 24px; text-align:center }
+  .wish-scene .head{
+    font-family:'Archivo', sans-serif;
+    font-size:11px; letter-spacing:.5em; text-transform:uppercase;
+    color: var(--film-warm); margin-bottom:24px;
+  }
+  .wish-scene h2{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size: clamp(36px, 5vw, 60px); color: var(--film-cream); margin-bottom:14px;
+  }
+  .wish-scene .desc{
+    font-family:'Fraunces', serif; font-style:italic; font-size:17px;
+    color: var(--film-cream); opacity:.7; max-width:520px; margin:0 auto 44px; line-height:1.6;
+  }
+  .wish-form{ max-width:520px; margin:0 auto 56px; text-align:left }
+  .wish-form .row{ display:flex; gap:12px; margin-bottom:14px }
+  .wish-form .row .field{ flex:1 }
+  .wish-form label{
+    display:block; font-family:'Archivo',sans-serif; font-size:10px;
+    letter-spacing:.25em; text-transform:uppercase; color:rgba(232,220,196,.55); margin-bottom:7px;
+  }
+  .wish-form input, .wish-form textarea{
+    width:100%; box-sizing:border-box; background:rgba(232,220,196,.04);
+    border:1px solid rgba(201,168,118,.3); color:var(--film-cream);
+    font-family:'Fraunces', serif; font-size:16px; padding:13px 15px;
+    border-radius:2px; transition:border-color .3s ease; outline:none;
+  }
+  .wish-form input:focus, .wish-form textarea:focus{ border-color:var(--film-warm) }
+  .wish-form textarea{ resize:vertical; min-height:92px; line-height:1.5 }
+  .wish-form .hp{ position:absolute; left:-9999px; width:1px; height:1px; opacity:0; overflow:hidden }
+  .vote{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+  .vote button{
+    cursor:pointer; background:rgba(232,220,196,.04); border:1px solid rgba(201,168,118,.3);
+    color:var(--film-cream); font-family:'Fraunces',serif; font-size:16px; padding:14px 8px; line-height:1.3;
+    border-radius:2px; transition:all .3s ease;
+  }
+  .vote button small{display:block; font-family:'Archivo',sans-serif; font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:rgba(232,220,196,.45); margin-top:4px}
+  .vote button.on{ background:var(--film-warm); color:var(--film-bg); border-color:var(--film-warm) }
+  .vote button.on small{ color:rgba(10,8,6,.6) }
+  .guests{ display:flex; align-items:center; gap:16px }
+  .guests button{ width:40px; height:40px; border-radius:50%; border:1px solid rgba(201,168,118,.45); background:transparent; color:var(--film-warm); font-size:18px; cursor:pointer }
+  .guests b{ font-family:'Fraunces',serif; font-weight:400; font-size:26px; min-width:28px; text-align:center }
+  .wish-submit{
+    margin-top:8px; width:100%; cursor:pointer;
+    background:transparent; border:1px solid var(--film-warm); color:var(--film-warm);
+    font-family:'Archivo', sans-serif; font-size:11px; letter-spacing:.25em; text-transform:uppercase;
+    padding:15px; border-radius:2px; transition:all .3s ease;
+  }
+  .wish-submit:hover{ background:rgba(201,168,118,.1) }
+  .wish-submit:disabled{ opacity:.45; cursor:not-allowed }
+  .wish-note{ font-family:'Archivo',sans-serif; font-size:11px; letter-spacing:.1em; margin-top:14px; min-height:16px; text-align:center }
+  .wish-note.ok{ color:#9cc29c } .wish-note.err{ color:#cf8b7d }
+  .tally{ display:flex; justify-content:center; gap:clamp(20px,6vw,56px); margin:0 auto 34px }
+  .tally div{ text-align:center }
+  .tally b{ display:block; font-family:'Fraunces',serif; font-weight:400; font-size:38px; color:var(--film-warm); line-height:1 }
+  .tally small{ font-family:'Archivo',sans-serif; font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:rgba(232,220,196,.45) }
+  .wish-list{ max-width:560px; margin:0 auto; display:flex; flex-direction:column; gap:16px }
+  .wish-card{
+    background:rgba(232,220,196,.04); border:1px solid rgba(201,168,118,.18);
+    border-radius:3px; padding:20px 22px; text-align:left; position:relative;
+  }
+  .wish-card .wc-msg{ font-family:'Fraunces', serif; font-style:italic; font-size:17px; color:var(--film-cream); line-height:1.55; margin-bottom:12px; word-break:break-word }
+  .wish-card .wc-from{ font-family:'Archivo',sans-serif; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--film-warm); display:flex; justify-content:space-between; gap:10px; align-items:center }
+  .wish-card .wc-tag{ font-size:9px; letter-spacing:.15em; padding:4px 9px; border:1px solid rgba(201,168,118,.35); border-radius:99px; white-space:nowrap }
+  .wish-card .wc-tag.no{ color:rgba(232,220,196,.45); border-color:rgba(232,220,196,.2) }
+  .wish-card .wc-del{
+    position:absolute; top:14px; right:14px; cursor:pointer; background:none; border:none;
+    color:rgba(232,220,196,.35); font-size:18px; line-height:1; padding:4px; transition:color .25s ease; display:none;
+  }
+  .wish-card .wc-del:hover{ color:#cf8b7d }
+  body.admin .wish-card .wc-del{ display:block }
+  .wish-empty{ font-family:'Fraunces',serif; font-style:italic; color:rgba(232,220,196,.4); font-size:16px }
+  @media (max-width:560px){ .wish-form .row{ flex-direction:column; gap:14px } }
+
+  .end-credits{
+    background: var(--film-bg);
+    min-height: 100vh;
+    padding: 20vh 32px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+  }
+  .fin{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-style: italic;
+    font-size: clamp(80px, 14vw, 160px);
+    color: var(--film-warm);
+    line-height: 1;
+    letter-spacing: .05em;
+    margin-bottom: 60px;
+  }
+  .end-credits .couple-names{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size: clamp(24px, 6.4vw, 40px);
+    color: var(--film-cream);
+    margin-bottom: 20px;
+    letter-spacing: -.01em;
+    white-space:nowrap;
+  }
+  .end-credits .couple-names em{font-family:'Fraunces', serif; font-style:normal; font-weight:inherit; color:var(--film-warm)}
+  .end-credits .date{
+    font-family:'Archivo', sans-serif;
+    font-size: 12px; letter-spacing:.5em;
+    color: rgba(232,220,196,.6);
+    margin-bottom: 80px;
+  }
+  .end-credits .copy{
+    font-family:'Archivo', sans-serif;
+    font-size: 9px; letter-spacing:.4em; text-transform:uppercase;
+    color: rgba(232,220,196,.3);
+  }
+
+  @media(max-width:768px){
+    .meta-top, .meta-bot{padding: 0 16px; font-size: 9px}
+    .meta-top .left, .meta-top .right{gap: 12px}
+    .meta-top span:nth-child(2), .meta-bot span:nth-child(2){display:none}
+    .chapter-label{left: 16px; font-size: 9px}
+    .subtitle{font-size: 18px; bottom: 14vh; width: 90%}
+    .hero-loc{letter-spacing:.3em; font-size:10px; padding:8px 14px}
+  }
+</style>
+</head>
+<body>
+
+<div class="letterbox-top intro" id="lbTop">
+  <div class="meta-top">
+    <div class="left">
+      <span class="dot"></span>
+      <span>REC · 4K · 24FPS</span>
+      <span>ARRI ALEXA</span>
+    </div>
+    <div class="right">
+      <span>INT · PALACE · NIGHT</span>
+      <span id="tc">00:00:00:00</span>
+    </div>
+  </div>
+</div>
+<div class="letterbox-bot intro" id="lbBot">
+  <div class="meta-bot">
+    <div class="left">
+      <span>SCENE <span id="sceneNo">01</span></span>
+      <span id="sceneName">OPENING</span>
+    </div>
+    <div class="right">
+      <span>HANH THONG · TPHCM</span>
+      <span>DECEMBER · 2026</span>
+    </div>
+  </div>
+</div>
+
+<section class="scene scene-open" data-scene="01" data-name="OPENING">
+  <div class="scene-overlay">
+    <div class="studio">A Hoàng &amp; Như Production</div>
+    <div class="presents">presents</div>
+    <div class="duration">— Cuộn xuống để bắt đầu · Scroll to begin —</div>
+  </div>
+</section>
+
+<section class="scene hero-scene" data-scene="02" data-name="TITLE">
+  <div class="scene-img" data-photo="hero" data-label="Ảnh bìa"></div>
+  <div class="hero-title">
+    <div class="hero-loc">A True Story · Saigon · 2026</div>
+    <h1 class="hero-line">
+      <span class="hero-name"><span class="char" style="animation-delay:.2s">H</span><span class="char" style="animation-delay:.3s">u</span><span class="char" style="animation-delay:.4s">y</span><span style="display:inline-block;width:.25em"></span><span class="char" style="animation-delay:.5s">H</span><span class="char" style="animation-delay:.6s">o</span><span class="char" style="animation-delay:.7s">à</span><span class="char" style="animation-delay:.8s">n</span><span class="char" style="animation-delay:.9s">g</span></span><span class="hero-amp">&amp;</span><span class="hero-name"><span class="char" style="animation-delay:1.9s">G</span><span class="char" style="animation-delay:2s">i</span><span class="char" style="animation-delay:2.1s">a</span><span style="display:inline-block;width:.25em"></span><span class="char" style="animation-delay:2.2s">N</span><span class="char" style="animation-delay:2.3s">h</span><span class="char" style="animation-delay:2.4s">ư</span></span>
+    </h1>
+    <div class="hero-subtitle">— a love story · 13.12.2026 —</div>
+  </div>
+</section>
+
+<section class="intermission" data-scene="03" data-name="CHAPTER I">
+  <div class="num-big" data-rom="I">I</div>
+  <div class="label">Chương Một · How We Met</div>
+  <p class="quote">"Có những người gặp nhau giữa muôn vàn ngã rẽ của cuộc đời, rồi nhận ra — chỉ cần nắm tay nhau, mọi con đường đều dẫn về nhà."<span class="en">Among all of life's crossroads, some people meet and realize that hand in hand, every road leads home.</span></p>
+</section>
+
+<section class="scene" data-scene="04" data-name="THE GLANCE">
+  <div class="scene-img" data-photo="s1" data-label="Ảnh cảnh 04"></div>
+  <div class="subtitle">
+    <span class="speaker">— Như</span>
+    "Lần đầu mình nhìn thấy anh ấy, mình đã biết..."
+    <span class="en">"The first time I saw him, I knew..."</span>
+  </div>
+</section>
+
+<section class="scene" data-scene="05" data-name="THE WALK">
+  <div class="scene-img" data-photo="s2" data-label="Ảnh cảnh 05"></div>
+  <div class="subtitle">
+    <span class="speaker">— Hoàng</span>
+    "...rằng đây sẽ là người mình đi cùng đến cuối con đường."
+    <span class="en">"...that she is the one I'll walk with to the end of the road."</span>
+  </div>
+</section>
+
+<section class="intermission" data-scene="06" data-name="CHAPTER II">
+  <div class="num-big" data-rom="II">II</div>
+  <div class="label">Chương Hai · The Cast</div>
+  <p class="quote">"Hai nhân vật chính. Một câu chuyện. Vô số khoảnh khắc đã làm nên hôm nay."<span class="en">Two leading roles. One story. Countless moments that brought us here.</span></p>
+</section>
+
+<section class="scene-dual" data-scene="07" data-name="THE CAST">
+  <div class="panel">
+    <img class="ph-img" data-photo="bride" alt="Cô dâu">
+    <div class="name-overlay">
+      <div class="role">Starring · The Bride</div>
+      <div class="pname">Nguyễn Ngọc <em>Gia Như</em></div>
+      <div class="parent">Út nữ của Ông Nguyễn Văn Tuấn &amp; Bà Nguyễn Thị Hoài Toàn<span class="en">Youngest daughter of Mr. &amp; Mrs. Nguyễn Văn Tuấn</span></div>
+    </div>
+  </div>
+  <div class="vs-mark">&amp;</div>
+  <div class="panel">
+    <img class="ph-img" data-photo="groom" alt="Chú rể">
+    <div class="name-overlay">
+      <div class="role">Starring · The Groom</div>
+      <div class="pname">Vũ Huy <em>Hoàng</em></div>
+      <div class="parent">Trưởng nam của Ông Vũ Văn Trường &amp; Bà Trịnh Thị Lê<span class="en">Eldest son of Mr. &amp; Mrs. Vũ Văn Trường</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="intermission" data-scene="08" data-name="CHAPTER III">
+  <div class="num-big" data-rom="III">III</div>
+  <div class="label">Chương Ba · The Slow Dance</div>
+  <p class="quote">"Đôi khi tình yêu không cần âm nhạc. Chỉ cần một người, một khoảnh khắc, và một bàn tay đưa ra."<span class="en">Sometimes love needs no music. Just one person, one moment, and a hand reaching out.</span></p>
+</section>
+
+<section class="scene" data-scene="09" data-name="THE DANCE">
+  <div class="scene-img" data-photo="s3" data-label="Ảnh cảnh 09"></div>
+  <div class="subtitle">
+    <span class="speaker">— Voiceover</span>
+    "Và họ khiêu vũ, như thể thời gian đã dừng lại."
+    <span class="en">"And they danced, as if time itself had stopped."</span>
+  </div>
+</section>
+
+<section class="scene" data-scene="10" data-name="THE PAUSE">
+  <div class="scene-img" data-photo="s4" data-label="Ảnh cảnh 10"></div>
+  <div class="subtitle">
+    <span class="speaker">— Như</span>
+    "Một khoảnh khắc thôi, nhưng đủ để cả đời không quên."
+    <span class="en">"Just a moment, yet enough to last a lifetime."</span>
+  </div>
+</section>
+
+<section class="intermission" data-scene="11" data-name="CHAPTER IV">
+  <div class="num-big" data-rom="IV">IV</div>
+  <div class="label">Chương Bốn · Production Notes</div>
+  <p class="quote">"Mọi câu chuyện đều có một ngày chính thức bắt đầu. Đây là ngày của chúng mình."<span class="en">Every story has a day it truly begins. This is ours.</span></p>
+</section>
+
+<section class="credits" data-scene="12" data-name="DETAILS">
+  <div class="credits-head">— Production Details —</div>
+  <div class="credits-grid">
+    <div class="credit-block">
+      <div class="role">Act I · Morning</div>
+      <h3>Lễ Tân Hôn</h3>
+      <span class="en">Wedding Ceremony</span>
+      <div class="time">Chủ Nhật · 10:00 · 13.12.2026</div>
+      <div class="place">Tư gia nhà trai<span class="en">At the groom's family home</span></div>
+      <div class="sub-note">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
+    </div>
+    <div class="credit-block">
+      <div class="role">Act II · Evening</div>
+      <h3>Tiệc Cưới</h3>
+      <span class="en">Wedding Reception</span>
+      <div class="time">Chủ Nhật · 18:00 · 13.12.2026</div>
+      <div class="place">Trung tâm Tiệc cưới &amp; Hội nghị Luxury Palace<br>Sảnh Platinum · Tầng 01<br>171 Nguyễn Thái Sơn, P. Hạnh Thông, TP.HCM</div>
+      <div class="sub-note">Đón khách 18h00 · Nhập tiệc 18h30</div>
+      <div class="sub-note" style="margin-top:6px">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Luxury+Palace+171+Nguy%E1%BB%85n+Th%C3%A1i+S%C6%A1n+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Xem bản đồ · Map
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="reel-countdown" data-scene="13" data-name="COUNTDOWN">
+  <div class="head">— Time Until Premiere —</div>
+  <h2>The day we say <em>"I do"</em><span class="en">Ngày chúng mình nói "Đồng ý"</span></h2>
+  <div class="reel-numbers">
+    <div class="reel-num"><span class="n" id="cd">00</span><span class="u">Ngày · Days</span></div>
+    <div class="reel-num"><span class="n" id="ch">00</span><span class="u">Giờ · Hours</span></div>
+    <div class="reel-num"><span class="n" id="cm">00</span><span class="u">Phút · Min</span></div>
+    <div class="reel-num"><span class="n" id="cs">00</span><span class="u">Giây · Sec</span></div>
+  </div>
+</section>
+
+<section class="end-credits" data-scene="14" data-name="FIN">
+  <div class="fin">Fin.</div>
+  <div class="couple-names">Huy Hoàng <em>&amp;</em> Gia Như</div>
+  <div class="date">13 · 12 · 2026</div>
+  <div class="copy">— A True Story · Directed by Love —</div>
+</section>
+
+<section class="wish-scene" data-scene="15" data-name="RSVP">
+  <div class="head">— Xác Nhận Tham Dự —</div>
+  <h2>Bạn sẽ <em>đến chứ?</em></h2>
+  <p class="desc">Cho chúng mình biết bạn có đến chung vui được không, và để lại đôi lời chúc nhé!<span class="en">Let us know if you can join us, and leave a few words for the couple.</span></p>
+
+  <div class="wish-form">
+    <div class="row">
+      <div class="field">
+        <label for="wName">Tên của bạn · Your name</label>
+        <input id="wName" type="text" maxlength="40" placeholder="Vd: Gia đình cô Tư" autocomplete="off">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Bạn có đến được không? · Attending?</label>
+        <div class="vote" id="vote">
+          <button type="button" data-v="yes">Mình sẽ đến<small>Joyfully accept</small></button>
+          <button type="button" data-v="no">Tiếc quá, mình bận<small>Regretfully decline</small></button>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="guestRow">
+      <div class="field">
+        <label>Số người đi cùng (tính cả bạn) · Guests</label>
+        <div class="guests"><button type="button" id="gMinus">−</button><b id="gNum">1</b><button type="button" id="gPlus">+</button></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="wMsg">Lời chúc · Wishes</label>
+        <textarea id="wMsg" maxlength="280" placeholder="Chúc hai bạn trăm năm hạnh phúc..."></textarea>
+      </div>
+    </div>
+    <input class="hp" type="text" id="wHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="wish-submit" id="wSubmit" type="button">Gửi xác nhận · Send</button>
+    <div class="wish-note" id="wNote"></div>
+  </div>
+
+  <div class="tally">
+    <div><b id="tYes">0</b><small>Sẽ đến</small></div>
+    <div><b id="tGuests">0</b><small>Khách</small></div>
+    <div><b id="tWish">0</b><small>Lời chúc</small></div>
+  </div>
+  <div class="wish-list" id="wList">
+    <div class="wish-empty">Hãy là người đầu tiên gửi lời chúc 💌</div>
+  </div>
+</section>
+
+<section class="gift-scene" data-scene="16" data-name="GIFT BOX" id="giftScene">
+  <div class="head">— Hộp Mừng Cưới —</div>
+  <h2>Gửi <em>chút yêu thương</em></h2>
+  <p class="desc">Được đón bạn đến chung vui đã là niềm hạnh phúc trọn vẹn của chúng mình. Nếu bạn ở xa hoặc muốn gửi thêm một lời chúc, đây là chiếc hộp nhỏ dành cho ngày vui.<span class="en">Your presence is the greatest gift. If you're far away, here is a little box for our special day.</span></p>
+  <button class="reveal-qr" id="revealQr" type="button">
+    <span class="ic">♡</span>
+    Mở hộp mừng cưới
+    <small>Tap to open</small>
+  </button>
+  <div class="qr-wrap">
+    <div class="qr-frame"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" class="segno"><path class="qrline" stroke="#1f3b33" d="M0 0.5h7m3 0h1m3 0h1m1 0h1m1 0h1m1 0h2m4 0h7m-33 1h1m5 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h3m2 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m5 0h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m3 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m3 0h7m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m5 0h1m1 0h2m1 0h1m1 0h2m5 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-20 1h1m1 0h2m3 0h2m-22 1h1m1 0h1m1 0h1m1 0h1m5 0h2m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1m2 0h1m-31 1h5m6 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-28 1h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m-33 1h2m2 0h1m4 0h5m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-32 1h3m2 0h2m1 0h1m2 0h2m1 0h1m1 0h3m7 0h2m2 0h3m-32 1h3m7 0h1m1 0h1m1 0h5m1 0h1m1 0h1m1 0h1m3 0h3m-32 1h2m1 0h5m1 0h1m1 0h1m1 0h1m8 0h2m1 0h2m1 0h1m1 0h1m1 0h1m-33 1h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h3m1 0h1m4 0h2m5 0h2m-30 1h1m3 0h1m2 0h1m1 0h1m3 0h2m2 0h2m1 0h1m1 0h2m2 0h2m2 0h1m-31 1h2m3 0h1m2 0h1m2 0h2m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h2m1 0h1m1 0h8m2 0h2m2 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-33 1h2m1 0h3m1 0h3m2 0h5m2 0h1m1 0h1m1 0h1m1 0h5m1 0h1m-29 1h4m1 0h1m1 0h2m1 0h1m1 0h2m4 0h2m3 0h1m1 0h1m1 0h3m-28 1h1m1 0h1m2 0h3m1 0h1m2 0h1m3 0h2m2 0h1m2 0h2m1 0h1m-32 1h1m1 0h1m1 0h1m1 0h1m2 0h5m2 0h1m1 0h1m3 0h3m1 0h1m3 0h1m-30 1h3m1 0h1m3 0h1m2 0h3m1 0h2m1 0h1m1 0h1m3 0h4m1 0h2m-32 1h1m2 0h2m1 0h4m2 0h2m1 0h2m1 0h3m1 0h1m1 0h5m1 0h2m-24 1h1m1 0h1m2 0h3m1 0h1m1 0h1m4 0h1m3 0h2m1 0h1m-32 1h7m3 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m-33 1h1m5 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h2m1 0h1m3 0h1m2 0h1m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m1 0h5m1 0h1m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m3 0h1m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m-33 1h1m5 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m3 0h2m-33 1h7m1 0h2m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m1 0h1"/></svg></div>
+    <div class="qr-name">Vũ Huy Hoàng</div>
+    <div class="qr-stk">ACB · NGÂN HÀNG Á CHÂU</div>
+    <button class="copy-stk" id="copyStk" data-stk="38298337" type="button">
+      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span class="copy-label">3829 8337</span>
+    </button>
+  </div>
+</section>
+
+<!-- music player -->
+<div id="bgmPlayer" style="position:fixed;bottom:11vh;right:18px;z-index:9997;display:none;align-items:center;gap:10px;">
+  <span id="bgmLabel" style="font-family:'Archivo',sans-serif;font-size:9px;letter-spacing:.15em;color:var(--film-warm);text-transform:uppercase;opacity:.7;background:rgba(10,8,6,.6);padding:5px 9px;border:1px solid rgba(201,168,118,.3);backdrop-filter:blur(4px);transition:opacity .4s;">Our Song ♪</span>
+  <button id="bgmBtn" aria-label="Bật/tắt nhạc" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--film-warm);background:rgba(10,8,6,.6);color:var(--film-warm);cursor:pointer;backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;">
+    <span id="bgmIcon">♫</span>
+  </button>
+</div>
+<audio id="bgmAudio" loop preload="auto">
+  <source src="music.mp4" type="audio/mp4">
+</audio>
+
+<script>
+  /* ===== ẢNH: dán base64 vào đây khi có ảnh ===== */
+  var PHOTOS = {
+    hero:'', s1:'', s2:'', bride:'', groom:'', s3:'', s4:''
+  };
+  document.querySelectorAll('[data-photo]').forEach(function(el){
+    var src = PHOTOS[el.dataset.photo];
+    if (el.tagName === 'IMG'){
+      if (src) el.src = src; else { el.removeAttribute('src'); el.style.minHeight='100%'; }
+    } else if (src){ el.style.backgroundImage = "url('"+src+"')"; }
+    else { el.classList.add('ph-empty'); }
+  });
+
+  setTimeout(() => {
+    document.getElementById('lbTop').classList.remove('intro');
+    document.getElementById('lbBot').classList.remove('intro');
+  }, 1800);
+
+  const scenes = document.querySelectorAll('[data-scene]');
+  const tcEl = document.getElementById('tc');
+  const sceneNoEl = document.getElementById('sceneNo');
+  const sceneNameEl = document.getElementById('sceneName');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.4){
+        e.target.classList.add('active');
+        sceneNoEl.textContent = e.target.dataset.scene;
+        sceneNameEl.textContent = e.target.dataset.name;
+      }
+    });
+  }, { threshold: [0.4, 0.6] });
+  scenes.forEach(s => io.observe(s));
+
+  function updateTimecode(){
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const totalSec = scrollPct * 600;
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = Math.floor(totalSec % 60);
+    const f = Math.floor((totalSec * 24) % 24);
+    const pad = n => String(n).padStart(2,'0');
+    tcEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}:${pad(f)}`;
+  }
+  window.addEventListener('scroll', updateTimecode, { passive: true });
+  updateTimecode();
+
+  const parallaxImgs = document.querySelectorAll('.scene:not(.hero-scene) .scene-img');
+  let parallaxTick = false;
+  function runParallax(){
+    const vh = window.innerHeight;
+    parallaxImgs.forEach(img => {
+      const r = img.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const prog = (r.top + r.height/2 - vh/2) / vh;
+      img.style.transform = `scale(1.12) translateY(${prog * -40}px)`;
+    });
+    parallaxTick = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!parallaxTick){ requestAnimationFrame(runParallax); parallaxTick = true; }
+  }, { passive: true });
+  runParallax();
+
+  const target = new Date('2026-12-13T18:00:00+07:00').getTime();
+  const pad = n => String(n).padStart(2,'0');
+  function tick(){
+    let diff = Math.max(0, target - Date.now());
+    const d = Math.floor(diff / 86400000); diff -= d*86400000;
+    const h = Math.floor(diff / 3600000);  diff -= h*3600000;
+    const m = Math.floor(diff / 60000);    diff -= m*60000;
+    const s = Math.floor(diff / 1000);
+    document.getElementById('cd').textContent = pad(d);
+    document.getElementById('ch').textContent = pad(h);
+    document.getElementById('cm').textContent = pad(m);
+    document.getElementById('cs').textContent = pad(s);
+  }
+  tick(); setInterval(tick, 1000);
+
+  if (matchMedia('(pointer:fine)').matches){
+    const cur = document.createElement('div');
+    cur.style.cssText = `
+      position:fixed; width:30px; height:30px; pointer-events:none; z-index:10000;
+      border: 1px solid rgba(201,168,118,.5);
+      transform: translate(-50%,-50%);
+      mix-blend-mode: difference;
+    `;
+    cur.innerHTML = `
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(201,168,118,.4)"></div>
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(201,168,118,.4)"></div>
+    `;
+    document.body.appendChild(cur);
+    document.addEventListener('mousemove', (e) => {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+    });
+  }
+
+  /* hộp mừng cưới: bấm mới hiện QR */
+  document.getElementById('revealQr').addEventListener('click', () => {
+    document.getElementById('giftScene').classList.add('open');
+  });
+
+  const copyBtn = document.getElementById('copyStk');
+  if (copyBtn){
+    const label = copyBtn.querySelector('.copy-label');
+    const original = label.textContent;
+    copyBtn.addEventListener('click', async () => {
+      const stk = copyBtn.dataset.stk;
+      try {
+        await navigator.clipboard.writeText(stk);
+      } catch(err) {
+        const ta = document.createElement('textarea');
+        ta.value = stk; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta);
+      }
+      copyBtn.classList.add('copied');
+      label.textContent = 'Đã sao chép ✓';
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        label.textContent = original;
+      }, 2000);
+    });
+  }
+
+(function(){
+  var audio=document.getElementById('bgmAudio');
+  var btn=document.getElementById('bgmBtn');
+  var icon=document.getElementById('bgmIcon');
+  var label=document.getElementById('bgmLabel');
+  var player=document.getElementById('bgmPlayer');
+  var playing=false;
+  audio.volume=0.6;
+  function showPlayer(){ player.style.display='flex'; }
+  if(audio.readyState>0) showPlayer();
+  audio.addEventListener('loadedmetadata', showPlayer);
+  function play(){ audio.play().then(function(){playing=true;icon.textContent='❚❚';btn.style.background='var(--film-warm)';btn.style.color='var(--film-bg)';label.style.opacity='1';}).catch(function(e){console.warn('audio play failed:',e);}); }
+  function pause(){ audio.pause();playing=false;icon.textContent='♫';btn.style.background='rgba(10,8,6,.6)';btn.style.color='var(--film-warm)';label.style.opacity='.7'; }
+  btn.addEventListener('click',function(){ playing?pause():play(); });
+  var armed=false;
+  function arm(){ if(armed)return; armed=true; play(); document.removeEventListener('click',arm); document.removeEventListener('touchstart',arm); document.removeEventListener('scroll',arm); }
+  document.addEventListener('click',arm,{once:false});
+  document.addEventListener('touchstart',arm,{once:false});
+  document.addEventListener('scroll',arm,{once:false});
+})();
+
+/* ===== Xác nhận tham dự + Lời chúc — Cloudflare D1 backend ===== */
+(function(){
+  var API = '/api/wishes';
+  var $ = function(id){ return document.getElementById(id); };
+  var nameEl=$('wName'), msgEl=$('wMsg'), hpEl=$('wHp'), btn=$('wSubmit'), note=$('wNote'), list=$('wList');
+  var attend='', guests=1, sending=false, demo=false;
+
+  var adminKey = new URLSearchParams(location.search).get('admin') || '';
+  if(adminKey){ document.body.classList.add('admin'); }
+
+  /* tên khách qua link: ?to=Anh+Minh */
+  var to = new URLSearchParams(location.search).get('to');
+  if(to){ nameEl.value = to.slice(0,40); }
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function setNote(t, ok){ note.textContent=t; note.className='wish-note '+(ok?'ok':'err'); }
+
+  $('vote').addEventListener('click', function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    attend=b.dataset.v;
+    this.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x===b); });
+    $('guestRow').style.display = attend==='no' ? 'none' : '';
+  });
+  $('gMinus').onclick=function(){ guests=Math.max(1,guests-1); $('gNum').textContent=guests; };
+  $('gPlus').onclick=function(){ guests=Math.min(10,guests+1); $('gNum').textContent=guests; };
+
+  function local(){ try{ return JSON.parse(localStorage.getItem('hn_rsvp')||'[]'); }catch(e){ return []; } }
+  function saveLocal(a){ try{ localStorage.setItem('hn_rsvp', JSON.stringify(a)); }catch(e){} }
+
+  function render(items){
+    items = items || [];
+    var yes=0, g=0, w=0;
+    items.forEach(function(it){ if(it.attend==='yes'){ yes++; g+=(+it.guests||1); } if(it.message) w++; });
+    $('tYes').textContent=yes; $('tGuests').textContent=g; $('tWish').textContent=w;
+    var shown = adminKey ? items : items.filter(function(it){ return it.message; });
+    list.innerHTML='';
+    if(!shown.length){
+      list.innerHTML='<div class="wish-empty">Hãy là người đầu tiên gửi lời chúc 💌</div>'; return;
+    }
+    shown.forEach(function(it){
+      var tag = it.attend==='yes' ? '<span class="wc-tag">Sẽ đến'+(it.guests>1?' · '+it.guests+' người':'')+'</span>'
+              : it.attend==='no' ? '<span class="wc-tag no">Vắng mặt</span>' : '';
+      var card=document.createElement('div'); card.className='wish-card';
+      var del = adminKey ? '<button class="wc-del" data-id="'+esc(it.id)+'" title="Xoá">×</button>' : '';
+      card.innerHTML = del +
+        '<div class="wc-msg">'+(it.message?esc(it.message):'<span style="opacity:.5">(không có lời chúc)</span>')+'</div>'+
+        '<div class="wc-from"><span>— '+esc(it.name)+'</span>'+tag+'</div>';
+      list.appendChild(card);
+    });
+    if(adminKey){
+      list.querySelectorAll('.wc-del').forEach(function(b){
+        b.addEventListener('click', function(){ delWish(b.dataset.id); });
+      });
+    }
+  }
+
+  function load(){
+    fetch(API).then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){ render(d.wishes||[]); })
+      .catch(function(){ demo=true; render(local()); });
+  }
+
+  function submit(){
+    if(sending) return;
+    var name=(nameEl.value||'').trim();
+    var msg=(msgEl.value||'').trim();
+    if(hpEl.value){ return; }
+    if(name.length<2){ setNote('Bạn nhập tên giúp mình nha', false); return; }
+    if(!attend){ setNote('Bạn chọn giúp mình có đến được không nha', false); return; }
+    var body={ name:name, message:msg, attend:attend, guests: attend==='yes'?guests:0, hp:hpEl.value };
+    var done=function(){
+      setNote(attend==='yes' ? 'Cảm ơn bạn, hẹn gặp bạn ngày vui 💛' : 'Cảm ơn lời chúc của bạn 💛', true);
+      msgEl.value=''; load();
+    };
+    sending=true; btn.disabled=true; setNote('Đang gửi...', true);
+    if(demo){
+      var a=local(); body.id=String(Date.now()); a.unshift(body); saveLocal(a);
+      done(); sending=false; btn.disabled=false; return;
+    }
+    fetch(API, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) })
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
+    .then(function(res){ if(res.ok){ done(); } else { setNote(res.d.error || 'Có lỗi xảy ra, thử lại nhé', false); } })
+    .catch(function(){ setNote('Mất kết nối, thử lại sau nhé', false); })
+    .finally(function(){ sending=false; btn.disabled=false; });
+  }
+
+  function delWish(id){
+    if(!confirm('Xoá mục này?')) return;
+    if(demo){ saveLocal(local().filter(function(x){ return x.id!==id; })); return load(); }
+    fetch(API+'?id='+encodeURIComponent(id)+'&admin='+encodeURIComponent(adminKey), {method:'DELETE'})
+      .then(function(r){ if(r.ok){ load(); } else { alert('Xoá thất bại'); } })
+      .catch(function(){ alert('Lỗi kết nối'); });
+  }
+
+  btn.addEventListener('click', submit);
+  load();
+})();
+</script>
+
+</body>
+</html>

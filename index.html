@@ -791,6 +791,11 @@
     .subtitle{font-size: 18px; bottom: 14vh; width: 90%}
     .hero-loc{letter-spacing:.3em; font-size:10px; padding:8px 14px}
   }
+
+  /* ===== chuyển ngôn ngữ ===== */
+  #langSw{position:fixed;bottom:11vh;left:18px;z-index:9997;display:flex;border:1px solid rgba(201,168,118,.5);border-radius:99px;overflow:hidden;background:rgba(10,8,6,.6);backdrop-filter:blur(4px)}
+  #langSw button{background:transparent;border:0;color:var(--film-warm);font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.2em;padding:9px 13px;cursor:pointer;transition:all .3s}
+  #langSw button.on{background:var(--film-warm);color:var(--film-bg)}
 </style>
 </head>
 <body>
@@ -843,14 +848,14 @@
 <section class="intermission" data-scene="03" data-name="CHAPTER I">
   <div class="num-big" data-rom="I">I</div>
   <div class="label">Chapter One · How We Met</div>
-  <p class="quote">"Có những người gặp nhau giữa muôn vàn ngã rẽ của cuộc đời, rồi nhận ra — chỉ cần nắm tay nhau, mọi con đường đều dẫn về nhà."</p>
+  <p class="quote" data-en="&quot;Among all of life&#x27;s crossroads, some people meet and realize that hand in hand, every road leads home.&quot;">"Có những người gặp nhau giữa muôn vàn ngã rẽ của cuộc đời, rồi nhận ra — chỉ cần nắm tay nhau, mọi con đường đều dẫn về nhà."</p>
 </section>
 
 <section class="scene" data-scene="04" data-name="THE GLANCE">
   <div class="scene-img" data-photo="s1" data-label="Ảnh cảnh 04"></div>
   <div class="subtitle">
     <span class="speaker">— Như</span>
-    "Lần đầu mình nhìn thấy anh ấy, mình đã biết..."
+    <span data-en="&quot;The first time I saw him, I knew...&quot;">"Lần đầu mình nhìn thấy anh ấy, mình đã biết..."</span>
     
   </div>
 </section>
@@ -859,7 +864,7 @@
   <div class="scene-img" data-photo="s2" data-label="Ảnh cảnh 05"></div>
   <div class="subtitle">
     <span class="speaker">— Hoàng</span>
-    "...rằng đây sẽ là người mình đi cùng đến cuối con đường."
+    <span data-en="&quot;...that she is the one I&#x27;ll walk with to the end of the road.&quot;">"...rằng đây sẽ là người mình đi cùng đến cuối con đường."</span>
     
   </div>
 </section>
@@ -867,7 +872,7 @@
 <section class="intermission" data-scene="06" data-name="CHAPTER II">
   <div class="num-big" data-rom="II">II</div>
   <div class="label">Chapter Two · The Cast</div>
-  <p class="quote">"Hai nhân vật chính. Một câu chuyện. Vô số khoảnh khắc đã làm nên hôm nay."</p>
+  <p class="quote" data-en="&quot;Two leading roles. One story. Countless moments that brought us here.&quot;">"Hai nhân vật chính. Một câu chuyện. Vô số khoảnh khắc đã làm nên hôm nay."</p>
 </section>
 
 <section class="scene-dual" data-scene="07" data-name="THE CAST">
@@ -876,7 +881,7 @@
     <div class="name-overlay">
       <div class="role">Starring · The Bride</div>
       <div class="pname">Nguyễn Ngọc <em>Gia Như</em></div>
-      <div class="parent">Út nữ của Ông Nguyễn Văn Tuấn &amp; Bà Nguyễn Thị Hoài Toàn</div>
+      <div class="parent" data-en="Youngest daughter of Mr. Nguyễn Văn Tuấn &amp;amp; Mrs. Nguyễn Thị Hoài Toàn">Út nữ của Ông Nguyễn Văn Tuấn &amp; Bà Nguyễn Thị Hoài Toàn</div>
     </div>
   </div>
   <div class="vs-mark">&amp;</div>
@@ -885,7 +890,7 @@
     <div class="name-overlay">
       <div class="role">Starring · The Groom</div>
       <div class="pname">Vũ Huy <em>Hoàng</em></div>
-      <div class="parent">Trưởng nam của Ông Vũ Văn Trường &amp; Bà Trịnh Thị Lê</div>
+      <div class="parent" data-en="Eldest son of Mr. Vũ Văn Trường &amp;amp; Mrs. Trịnh Thị Lê">Trưởng nam của Ông Vũ Văn Trường &amp; Bà Trịnh Thị Lê</div>
     </div>
   </div>
 </section>
@@ -893,14 +898,14 @@
 <section class="intermission" data-scene="08" data-name="CHAPTER III">
   <div class="num-big" data-rom="III">III</div>
   <div class="label">Chapter Three · The Slow Dance</div>
-  <p class="quote">"Đôi khi tình yêu không cần âm nhạc. Chỉ cần một người, một khoảnh khắc, và một bàn tay đưa ra."</p>
+  <p class="quote" data-en="&quot;Sometimes love needs no music. Just one person, one moment, and a hand reaching out.&quot;">"Đôi khi tình yêu không cần âm nhạc. Chỉ cần một người, một khoảnh khắc, và một bàn tay đưa ra."</p>
 </section>
 
 <section class="scene" data-scene="09" data-name="THE DANCE">
   <div class="scene-img" data-photo="s3" data-label="Ảnh cảnh 09"></div>
   <div class="subtitle">
     <span class="speaker">— Voiceover</span>
-    "Và họ khiêu vũ, như thể thời gian đã dừng lại."
+    <span data-en="&quot;And they danced, as if time itself had stopped.&quot;">"Và họ khiêu vũ, như thể thời gian đã dừng lại."</span>
     
   </div>
 </section>
@@ -909,7 +914,7 @@
   <div class="scene-img" data-photo="s4" data-label="Ảnh cảnh 10"></div>
   <div class="subtitle">
     <span class="speaker">— Như</span>
-    "Một khoảnh khắc thôi, nhưng đủ để cả đời không quên."
+    <span data-en="&quot;Just a moment, yet enough to last a lifetime.&quot;">"Một khoảnh khắc thôi, nhưng đủ để cả đời không quên."</span>
     
   </div>
 </section>
@@ -917,7 +922,7 @@
 <section class="intermission" data-scene="11" data-name="CHAPTER IV">
   <div class="num-big" data-rom="IV">IV</div>
   <div class="label">Chapter Four · Production Notes</div>
-  <p class="quote">"Mọi câu chuyện đều có một ngày chính thức bắt đầu. Đây là ngày của chúng mình."</p>
+  <p class="quote" data-en="&quot;Every story has a day it truly begins. This is ours.&quot;">"Mọi câu chuyện đều có một ngày chính thức bắt đầu. Đây là ngày của chúng mình."</p>
 </section>
 
 <section class="credits" data-scene="12" data-name="DETAILS">
@@ -925,23 +930,23 @@
   <div class="credits-grid">
     <div class="credit-block">
       <div class="role">Act I · Morning</div>
-      <h3>Lễ Tân Hôn</h3>
+      <h3 data-en="Wedding Ceremony">Lễ Tân Hôn</h3>
       
-      <div class="time">Chủ Nhật · 10:00 · 13.12.2026</div>
-      <div class="place">Tư gia nhà trai</div>
-      <div class="sub-note">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
+      <div class="time" data-en="Sunday · 10:00 AM · 13.12.2026">Chủ Nhật · 10:00 · 13.12.2026</div>
+      <div class="place" data-en="The groom&#x27;s family home">Tư gia nhà trai</div>
+      <div class="sub-note" data-en="5th day of the 11th lunar month, Year of the Horse">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
     </div>
     <div class="credit-block">
       <div class="role">Act II · Evening</div>
-      <h3>Tiệc Cưới</h3>
+      <h3 data-en="Wedding Reception">Tiệc Cưới</h3>
       
-      <div class="time">Chủ Nhật · 18:00 · 13.12.2026</div>
-      <div class="place">Trung tâm Tiệc cưới &amp; Hội nghị Luxury Palace<br>Sảnh Platinum · Tầng 01<br>171 Nguyễn Thái Sơn, P. Hạnh Thông, TP.HCM</div>
-      <div class="sub-note">Đón khách 18h00 · Nhập tiệc 18h30</div>
-      <div class="sub-note" style="margin-top:6px">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
+      <div class="time" data-en="Sunday · 6:00 PM · 13.12.2026">Chủ Nhật · 18:00 · 13.12.2026</div>
+      <div class="place" data-en="Luxury Palace Wedding &amp;amp; Convention Center&lt;br&gt;Platinum Hall · 1st Floor&lt;br&gt;171 Nguyen Thai Son, Hanh Thong Ward, Ho Chi Minh City">Trung tâm Tiệc cưới &amp; Hội nghị Luxury Palace<br>Sảnh Platinum · Tầng 01<br>171 Nguyễn Thái Sơn, P. Hạnh Thông, TP.HCM</div>
+      <div class="sub-note" data-en="Guest arrival 6:00 PM · Dinner 6:30 PM">Đón khách 18h00 · Nhập tiệc 18h30</div>
+      <div class="sub-note" style="margin-top:6px" data-en="5th day of the 11th lunar month, Year of the Horse">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
       <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Luxury+Palace+171+Nguy%E1%BB%85n+Th%C3%A1i+S%C6%A1n+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        Xem bản đồ
+        <span data-en="View map">Xem bản đồ</span>
       </a>
     </div>
   </div>
@@ -966,47 +971,47 @@
 </section>
 
 <section class="wish-scene" data-scene="15" data-name="RSVP">
-  <div class="head">— Xác Nhận Tham Dự —</div>
-  <h2>Bạn sẽ <em>đến chứ?</em></h2>
-  <p class="desc">Cho chúng mình biết bạn có đến chung vui được không, và để lại đôi lời chúc nhé!</p>
+  <div class="head" data-en="— RSVP —">— Xác Nhận Tham Dự —</div>
+  <h2 data-en="Will you &lt;em&gt;join us?&lt;/em&gt;">Bạn sẽ <em>đến chứ?</em></h2>
+  <p class="desc" data-en="Let us know if you can celebrate with us, and leave a few words for the couple!">Cho chúng mình biết bạn có đến chung vui được không, và để lại đôi lời chúc nhé!</p>
 
   <div class="wish-form">
     <div class="row">
       <div class="field">
-        <label for="wName">Tên của bạn</label>
-        <input id="wName" type="text" maxlength="40" placeholder="Vd: Gia đình cô Tư" autocomplete="off">
+        <label for="wName" data-en="Your name">Tên của bạn</label>
+        <input id="wName" type="text" maxlength="40" placeholder="Vd: Gia đình cô Tư" data-en-ph="e.g. The Smith family" autocomplete="off">
       </div>
     </div>
     <div class="row">
       <div class="field">
-        <label>Bạn có đến được không?</label>
+        <label data-en="Will you attend?">Bạn có đến được không?</label>
         <div class="vote" id="vote">
-          <button type="button" data-v="yes">Mình sẽ đến</button>
-          <button type="button" data-v="no">Tiếc quá, mình bận</button>
+          <button type="button" data-v="yes" data-en="Joyfully accept">Mình sẽ đến</button>
+          <button type="button" data-v="no" data-en="Regretfully decline">Tiếc quá, mình bận</button>
         </div>
       </div>
     </div>
     <div class="row" id="guestRow">
       <div class="field">
-        <label>Số người đi cùng (tính cả bạn)</label>
+        <label data-en="Number of guests (including you)">Số người đi cùng (tính cả bạn)</label>
         <div class="guests"><button type="button" id="gMinus">−</button><b id="gNum">1</b><button type="button" id="gPlus">+</button></div>
       </div>
     </div>
     <div class="row">
       <div class="field">
-        <label for="wMsg">Lời chúc</label>
-        <textarea id="wMsg" maxlength="280" placeholder="Chúc hai bạn trăm năm hạnh phúc..."></textarea>
+        <label for="wMsg" data-en="Your wishes">Lời chúc</label>
+        <textarea id="wMsg" maxlength="280" placeholder="Chúc hai bạn trăm năm hạnh phúc..." data-en-ph="Wishing you a lifetime of happiness..."></textarea>
       </div>
     </div>
     <input class="hp" type="text" id="wHp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="wish-submit" id="wSubmit" type="button">Gửi xác nhận</button>
+    <button class="wish-submit" id="wSubmit" type="button" data-en="Send RSVP">Gửi xác nhận</button>
     <div class="wish-note" id="wNote"></div>
   </div>
 
   <div class="tally">
-    <div><b id="tYes">0</b><small>Sẽ đến</small></div>
-    <div><b id="tGuests">0</b><small>Khách</small></div>
-    <div><b id="tWish">0</b><small>Lời chúc</small></div>
+    <div><b id="tYes">0</b><small data-en="Attending">Sẽ đến</small></div>
+    <div><b id="tGuests">0</b><small data-en="Guests">Khách</small></div>
+    <div><b id="tWish">0</b><small data-en="Wishes">Lời chúc</small></div>
   </div>
   <div class="wish-list" id="wList">
     <div class="wish-empty">Hãy là người đầu tiên gửi lời chúc 💌</div>
@@ -1014,24 +1019,26 @@
 </section>
 
 <section class="gift-scene" data-scene="16" data-name="GIFT BOX" id="giftScene">
-  <div class="head">— Hộp Mừng Cưới —</div>
-  <h2>Gửi <em>chút yêu thương</em></h2>
-  <p class="desc">Được đón bạn đến chung vui đã là niềm hạnh phúc trọn vẹn của chúng mình. Nếu bạn ở xa hoặc muốn gửi thêm một lời chúc, đây là chiếc hộp nhỏ dành cho ngày vui.</p>
+  <div class="head" data-en="— Gift Box —">— Hộp Mừng Cưới —</div>
+  <h2 data-en="Send a little &lt;em&gt;love&lt;/em&gt;">Gửi <em>chút yêu thương</em></h2>
+  <p class="desc" data-en="Having you celebrate with us is already the greatest gift. If you&#x27;re far away or would like to send your blessings, here is a little box for our special day.">Được đón bạn đến chung vui đã là niềm hạnh phúc trọn vẹn của chúng mình. Nếu bạn ở xa hoặc muốn gửi thêm một lời chúc, đây là chiếc hộp nhỏ dành cho ngày vui.</p>
   <button class="reveal-qr" id="revealQr" type="button">
     <span class="ic">♡</span>
-    Mở hộp mừng cưới
-    <small>Chạm để mở</small>
+    <span data-en="Open the gift box">Mở hộp mừng cưới</span>
+    <small data-en="Tap to open">Chạm để mở</small>
   </button>
   <div class="qr-wrap">
     <div class="qr-frame"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" class="segno"><path class="qrline" stroke="#1f3b33" d="M0 0.5h7m3 0h1m3 0h1m1 0h1m1 0h1m1 0h2m4 0h7m-33 1h1m5 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h3m2 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m5 0h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m3 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m3 0h7m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m5 0h1m1 0h2m1 0h1m1 0h2m5 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-20 1h1m1 0h2m3 0h2m-22 1h1m1 0h1m1 0h1m1 0h1m5 0h2m2 0h1m1 0h1m1 0h2m1 0h2m3 0h1m2 0h1m-31 1h5m6 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-28 1h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m-33 1h2m2 0h1m4 0h5m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-32 1h3m2 0h2m1 0h1m2 0h2m1 0h1m1 0h3m7 0h2m2 0h3m-32 1h3m7 0h1m1 0h1m1 0h5m1 0h1m1 0h1m1 0h1m3 0h3m-32 1h2m1 0h5m1 0h1m1 0h1m1 0h1m8 0h2m1 0h2m1 0h1m1 0h1m1 0h1m-33 1h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h3m1 0h1m4 0h2m5 0h2m-30 1h1m3 0h1m2 0h1m1 0h1m3 0h2m2 0h2m1 0h1m1 0h2m2 0h2m2 0h1m-31 1h2m3 0h1m2 0h1m2 0h2m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m3 0h1m-32 1h2m1 0h1m1 0h8m2 0h2m2 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-33 1h2m1 0h3m1 0h3m2 0h5m2 0h1m1 0h1m1 0h1m1 0h5m1 0h1m-29 1h4m1 0h1m1 0h2m1 0h1m1 0h2m4 0h2m3 0h1m1 0h1m1 0h3m-28 1h1m1 0h1m2 0h3m1 0h1m2 0h1m3 0h2m2 0h1m2 0h2m1 0h1m-32 1h1m1 0h1m1 0h1m1 0h1m2 0h5m2 0h1m1 0h1m3 0h3m1 0h1m3 0h1m-30 1h3m1 0h1m3 0h1m2 0h3m1 0h2m1 0h1m1 0h1m3 0h4m1 0h2m-32 1h1m2 0h2m1 0h4m2 0h2m1 0h2m1 0h3m1 0h1m1 0h5m1 0h2m-24 1h1m1 0h1m2 0h3m1 0h1m1 0h1m4 0h1m3 0h2m1 0h1m-32 1h7m3 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m-33 1h1m5 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h2m1 0h1m3 0h1m2 0h1m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m1 0h5m1 0h1m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2m-33 1h1m1 0h3m1 0h1m1 0h1m3 0h3m3 0h1m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m-33 1h1m5 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m3 0h2m-33 1h7m1 0h2m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h3m1 0h1"/></svg></div>
     <div class="qr-name">Vũ Huy Hoàng</div>
-    <div class="qr-stk">ACB · NGÂN HÀNG Á CHÂU</div>
+    <div class="qr-stk" data-en="ACB · ASIA COMMERCIAL BANK">ACB · NGÂN HÀNG Á CHÂU</div>
     <button class="copy-stk" id="copyStk" data-stk="38298337" type="button">
       <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       <span class="copy-label">3829 8337</span>
     </button>
   </div>
 </section>
+
+<div id="langSw"><button type="button" data-l="vi" class="on">VI</button><button type="button" data-l="en">EN</button></div>
 
 <!-- music player -->
 <div id="bgmPlayer" style="position:fixed;bottom:11vh;right:18px;z-index:9997;display:none;align-items:center;gap:10px;">
@@ -1045,6 +1052,28 @@
 </audio>
 
 <script>
+  /* ===== NGÔN NGỮ VI / EN ===== */
+  var LANG = 'vi';
+  function T(vi, en){ return LANG === 'en' ? en : vi; }
+  function setLang(l){
+    LANG = l === 'en' ? 'en' : 'vi';
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (el.dataset.vi === undefined) el.dataset.vi = el.innerHTML;
+      el.innerHTML = LANG === 'en' ? el.dataset.en : el.dataset.vi;
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      if (el.dataset.viPh === undefined) el.dataset.viPh = el.placeholder;
+      el.placeholder = LANG === 'en' ? el.dataset.enPh : el.dataset.viPh;
+    });
+    document.querySelectorAll('#langSw button').forEach(function(b){ b.classList.toggle('on', b.dataset.l === LANG); });
+    try{ localStorage.setItem('hn_lang', LANG); }catch(e){}
+    if (window.__rerender) window.__rerender();
+  }
+  document.getElementById('langSw').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (b) setLang(b.dataset.l);
+  });
+
   /* ===== ẢNH: dán base64 vào đây khi có ảnh ===== */
   var PHOTOS = {
     hero:'', s1:'', s2:'', bride:'', groom:'', s3:'', s4:''
@@ -1163,7 +1192,7 @@
         document.body.removeChild(ta);
       }
       copyBtn.classList.add('copied');
-      label.textContent = 'Đã sao chép ✓';
+      label.textContent = T('Đã sao chép ✓','Copied ✓');
       setTimeout(() => {
         copyBtn.classList.remove('copied');
         label.textContent = original;
@@ -1223,22 +1252,22 @@
   function saveLocal(a){ try{ localStorage.setItem('hn_rsvp', JSON.stringify(a)); }catch(e){} }
 
   function render(items){
-    items = items || [];
+    items = items || []; last = items;
     var yes=0, g=0, w=0;
     items.forEach(function(it){ if(it.attend==='yes'){ yes++; g+=(+it.guests||1); } if(it.message) w++; });
     $('tYes').textContent=yes; $('tGuests').textContent=g; $('tWish').textContent=w;
     var shown = adminKey ? items : items.filter(function(it){ return it.message; });
     list.innerHTML='';
     if(!shown.length){
-      list.innerHTML='<div class="wish-empty">Hãy là người đầu tiên gửi lời chúc 💌</div>'; return;
+      list.innerHTML='<div class="wish-empty">'+T('Hãy là người đầu tiên gửi lời chúc 💌','Be the first to send your wishes 💌')+'</div>'; return;
     }
     shown.forEach(function(it){
-      var tag = it.attend==='yes' ? '<span class="wc-tag">Sẽ đến'+(it.guests>1?' · '+it.guests+' người':'')+'</span>'
-              : it.attend==='no' ? '<span class="wc-tag no">Vắng mặt</span>' : '';
+      var tag = it.attend==='yes' ? '<span class="wc-tag">'+T('Sẽ đến','Attending')+(it.guests>1?' · '+it.guests+T(' người',' guests'):'')+'</span>'
+              : it.attend==='no' ? '<span class="wc-tag no">'+T('Vắng mặt','Not attending')+'</span>' : '';
       var card=document.createElement('div'); card.className='wish-card';
       var del = adminKey ? '<button class="wc-del" data-id="'+esc(it.id)+'" title="Xoá">×</button>' : '';
       card.innerHTML = del +
-        '<div class="wc-msg">'+(it.message?esc(it.message):'<span style="opacity:.5">(không có lời chúc)</span>')+'</div>'+
+        '<div class="wc-msg">'+(it.message?esc(it.message):'<span style="opacity:.5">'+T('(không có lời chúc)','(no message)')+'</span>')+'</div>'+
         '<div class="wc-from"><span>— '+esc(it.name)+'</span>'+tag+'</div>';
       list.appendChild(card);
     });
@@ -1260,22 +1289,22 @@
     var name=(nameEl.value||'').trim();
     var msg=(msgEl.value||'').trim();
     if(hpEl.value){ return; }
-    if(name.length<2){ setNote('Bạn nhập tên giúp mình nha', false); return; }
-    if(!attend){ setNote('Bạn chọn giúp mình có đến được không nha', false); return; }
+    if(name.length<2){ setNote(T('Bạn nhập tên giúp mình nha','Please enter your name'), false); return; }
+    if(!attend){ setNote(T('Bạn chọn giúp mình có đến được không nha','Please let us know if you can attend'), false); return; }
     var body={ name:name, message:msg, attend:attend, guests: attend==='yes'?guests:0, hp:hpEl.value };
     var done=function(){
-      setNote(attend==='yes' ? 'Cảm ơn bạn, hẹn gặp bạn ngày vui 💛' : 'Cảm ơn lời chúc của bạn 💛', true);
+      setNote(attend==='yes' ? T('Cảm ơn bạn, hẹn gặp bạn ngày vui 💛','Thank you, see you on our big day 💛') : T('Cảm ơn lời chúc của bạn 💛','Thank you for your wishes 💛'), true);
       msgEl.value=''; load();
     };
-    sending=true; btn.disabled=true; setNote('Đang gửi...', true);
+    sending=true; btn.disabled=true; setNote(T('Đang gửi...','Sending...'), true);
     if(demo){
       var a=local(); body.id=String(Date.now()); a.unshift(body); saveLocal(a);
       done(); sending=false; btn.disabled=false; return;
     }
     fetch(API, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) })
     .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
-    .then(function(res){ if(res.ok){ done(); } else { setNote(res.d.error || 'Có lỗi xảy ra, thử lại nhé', false); } })
-    .catch(function(){ setNote('Mất kết nối, thử lại sau nhé', false); })
+    .then(function(res){ if(res.ok){ done(); } else { setNote(LANG==='en' ? 'Something went wrong, please try again' : (res.d.error || 'Có lỗi xảy ra, thử lại nhé'), false); } })
+    .catch(function(){ setNote(T('Mất kết nối, thử lại sau nhé','Connection lost, please try again'), false); })
     .finally(function(){ sending=false; btn.disabled=false; });
   }
 
@@ -1287,9 +1316,16 @@
       .catch(function(){ alert('Lỗi kết nối'); });
   }
 
+  var last=[];
+  window.__rerender=function(){ render(last); };
   btn.addEventListener('click', submit);
   load();
 })();
+  (function(){
+    var q = new URLSearchParams(location.search).get('lang'), saved = null;
+    try{ saved = localStorage.getItem('hn_lang'); }catch(e){}
+    setLang(q || saved || 'vi');
+  })();
 </script>
 
 </body>

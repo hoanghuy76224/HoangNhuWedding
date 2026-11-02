@@ -17,8 +17,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;p
 @media(max-width:670px){.stats{grid-template-columns:repeat(2,1fr)}.panel{padding:15px}main{padding:25px 14px 60px}th,td{padding:10px 8px}table{min-width:650px}}
 </style></head><body><main>
 <div class="eyebrow">Huy Hoàng & Gia Như · 13.12.2026</div><h1>Wedding Dashboard</h1>
-<div id="login" class="panel"><h2>Đăng nhập quản trị</h2><p class="muted">Nhập ADMIN_KEY đã đặt trong Cloudflare Pages → Settings → Variables and Secrets. Khóa chỉ được giữ trong phiên tab này.</p>
-<form id="loginForm" class="row"><input id="key" type="password" required autocomplete="off" placeholder="ADMIN_KEY"><button>Đăng nhập</button></form><p id="error"></p></div>
+<div id="login" class="panel"><h2>Đăng nhập quản trị bằng Google</h2><p class="muted">Chỉ tài khoản Google được cấp quyền quản trị trong Firebase mới xem được RSVP và lưu bút.</p><button id="googleLogin" type="button">Đăng nhập với Google</button><p id="error"></p></div>
 <div id="app">
 <div class="row"><span class="status" id="notice"></span><button class="ghost" id="refresh">Làm mới</button><button class="ghost" id="logout">Đăng xuất</button></div>
 <div class="stats" style="margin-top:20px">
@@ -33,13 +32,19 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;p
 </div>
 <div class="panel"><div class="row" style="justify-content:space-between"><h2>Danh sách RSVP & lưu bút</h2><div class="row"><input id="search" placeholder="Tìm khách / lời chúc"><select id="filter"><option value="all">Tất cả</option><option value="yes">Sẽ đến</option><option value="no">Không đến</option><option value="wish">Có lời chúc</option></select><button class="ghost" id="csv">Xuất CSV</button></div></div>
 <div class="table-scroll"><table><thead><tr><th>Khách</th><th>Trạng thái</th><th>Số người</th><th>Lưu bút</th><th>Ngày gửi</th><th></th></tr></thead><tbody id="rows"></tbody></table></div></div>
-</div></main><script>
+</div></main><script src="/firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script>
 const $=id=>document.getElementById(id);
-let key=sessionStorage.getItem('hn_admin_key')||'',items=[];
+let key='',items=[];
+let auth=null;
+try { if(!window.FIREBASE_CONFIG || !window.FIREBASE_CONFIG.apiKey) throw Error('Chưa cấu hình Firebase.'); firebase.initializeApp(window.FIREBASE_CONFIG); auth=firebase.auth(); } catch(e){ $('error').textContent=e.message; $('googleLogin').disabled=true; }
+async function token(){if(!auth?.currentUser)throw Error('Cần đăng nhập Google');return await auth.currentUser.getIdToken();}
 function setMessage(msg){$('notice').textContent=msg}
 async function load(){
- const r=await fetch('/api/wishes?dashboard=1',{headers:{'X-Admin-Key':key},cache:'no-store'});
- if(!r.ok)throw Error(r.status===403?'ADMIN_KEY không đúng hoặc chưa thiết lập trên Cloudflare.':'Không thể tải dữ liệu');
+ const r=await fetch('/api/wishes?dashboard=1',{headers:{'Authorization':'Bearer '+await token()},cache:'no-store'});
+ if(!r.ok)throw Error(r.status===403?'Tài khoản chưa được cấp quyền hoặc chưa thiết lập FIREBASE_ADMIN_UID / FIREBASE_PROJECT_ID.':'Không thể tải dữ liệu');
  const data=await r.json();items=data.wishes||[];
  $('login').style.display='none';$('app').style.display='block';
  $('total').textContent=items.length;
@@ -61,13 +66,13 @@ function render(){
  if(!filtered.length){let tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=6;td.textContent='Chưa có dữ liệu phù hợp';tr.append(td);tbody.append(tr)}
 }
 async function remove(id){if(!confirm('Xóa phản hồi này vĩnh viễn?'))return;
- const r=await fetch('/api/wishes?id='+encodeURIComponent(id),{method:'DELETE',headers:{'X-Admin-Key':key}});if(!r.ok){alert('Không xóa được');return}await load()}
-$('loginForm').onsubmit=async e=>{e.preventDefault();key=$('key').value.trim();try{await load();sessionStorage.setItem('hn_admin_key',key)}catch(err){$('error').textContent=err.message}};
+ const r=await fetch('/api/wishes?id='+encodeURIComponent(id),{method:'DELETE',headers:{'Authorization':'Bearer '+await token()}});if(!r.ok){alert('Không xóa được');return}await load()}
+$('googleLogin').onclick=async()=>{try{ $('error').textContent=''; await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); await load(); }catch(err){$('error').textContent=err.message}};
 $('refresh').onclick=()=>load().catch(e=>setMessage(e.message));
-$('logout').onclick=()=>{sessionStorage.removeItem('hn_admin_key');key='';$('app').style.display='none';$('login').style.display='block';$('key').value=''};
+$('logout').onclick=async()=>{await auth?.signOut();$('app').style.display='none';$('login').style.display='block'};
 $('search').oninput=render;$('filter').onchange=render;
 $('makeLink').onclick=()=>{const name=$('invitee').value.trim();if(!name){alert('Nhập tên khách trước nhé');return}const url=new URL('./',location.href);url.searchParams.set('to',name);$('link').value=url.href};
 $('copyLink').onclick=async()=>{if(!$('link').value){$('makeLink').click();if(!$('link').value)return}try{await navigator.clipboard.writeText($('link').value);setMessage('Đã sao chép link')}catch(e){$('link').select();setMessage('Chọn và sao chép link trong ô')}};
 $('csv').onclick=()=>{let rows=[['Tên','Tham dự','Số người','Lời chúc','Thời gian'],...items.map(x=>[x.name,x.attend,x.guests,x.message,x.created_at])];const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='wedding-rsvp.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
-if(key)load().catch(()=>{sessionStorage.removeItem('hn_admin_key');key=''});
+if(auth)auth.onAuthStateChanged(async user=>{if(user){try{await load()}catch(err){$('error').textContent=err.message;$('app').style.display='none';$('login').style.display='block'}}else{$('app').style.display='none';$('login').style.display='block'}});
 </script></body></html>

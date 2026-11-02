@@ -38,7 +38,7 @@ export async function onRequestPost({ request, env }) {
 
 export async function onRequestDelete({ request, env }) {
   const u = new URL(request.url);
-  if (!env.ADMIN_KEY || u.searchParams.get('admin') !== env.ADMIN_KEY) return J({ error: 'Không có quyền' }, 403);
+  if (!env.ADMIN_KEY || (request.headers.get('X-Admin-Key') || u.searchParams.get('admin')) !== env.ADMIN_KEY) return J({ error: 'Không có quyền' }, 403);
   await env.DB.prepare('DELETE FROM wishes WHERE id=?').bind(u.searchParams.get('id')).run();
   return J({ ok: true });
 }

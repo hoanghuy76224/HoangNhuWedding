@@ -1,8 +1,0 @@
-CREATE TABLE IF NOT EXISTS wishes (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  message TEXT,
-  attend TEXT,
-  guests INTEGER DEFAULT 0,
-  created_at TEXT
-);

@@ -803,6 +803,66 @@
   #langSw{position:fixed;bottom:11vh;left:18px;z-index:9997;display:flex;border:1px solid rgba(201,168,118,.5);border-radius:99px;overflow:hidden;background:rgba(10,8,6,.6);backdrop-filter:blur(4px)}
   #langSw button{background:transparent;border:0;color:var(--film-warm);font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.2em;padding:9px 13px;cursor:pointer;transition:all .3s}
   #langSw button.on{background:var(--film-warm);color:var(--film-bg)}
+  /* ============ ADMIN OVERLAY (#admin) ============ */
+  .admin-root{display:none;position:fixed;inset:0;z-index:10001;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#f5f0e6;color:#2a2219;font-family:'Archivo',system-ui,sans-serif;cursor:auto}
+  .admin-root.on{display:block}
+  body.adm-on #langSw, body.adm-on #bgmPlayer{display:none!important}
+  body.adm-on::before{display:none}
+  .adm-wrap{max-width:940px;margin:0 auto;padding:24px 16px 80px}
+  .adm-gate{max-width:360px;margin:12vh auto;background:#fff;border:1px solid #e2d6c2;border-radius:14px;padding:32px 26px;text-align:center;box-shadow:0 14px 40px rgba(60,40,20,.12)}
+  .adm-gate h2{font-size:19px;color:#6b4e24;margin-bottom:6px}
+  .adm-gate p{font-size:13px;opacity:.8;margin-bottom:20px}
+  .adm-gate input{width:100%;font-size:16px;padding:12px 14px;border:1px solid #e2d6c2;border-radius:9px;outline:none;text-align:center}
+  .adm-gate input:focus{border-color:#c9a876;box-shadow:0 0 0 3px rgba(201,168,118,.25)}
+  .adm-gate button{width:100%;margin-top:14px;font-size:14px;font-weight:600;color:#fff;background:#6b4e24;border:none;border-radius:9px;padding:13px;cursor:pointer}
+  .adm-gate .adm-err{color:#a4473a;font-size:12.5px;margin-top:12px;min-height:16px}
+  .adm-back{display:inline-block;margin-top:16px;font-size:12.5px;color:#2a2219;text-decoration:none;opacity:.75}
+  .adm-app{display:none}
+  .adm-app.on{display:block}
+  .adm-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+  .adm-app h1{font-size:22px;color:#6b4e24;font-weight:700}
+  .adm-sub{font-size:13px;opacity:.8;margin-top:4px}
+  .adm-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .adm-btn{font-size:13px;padding:9px 15px;border-radius:8px;border:1px solid #6b4e24;background:transparent;color:#6b4e24;cursor:pointer;text-decoration:none;display:inline-block;font-family:inherit}
+  .adm-btn:hover{background:#6b4e24;color:#fff}
+  .adm-btn.solid{background:#6b4e24;color:#fff}
+  .adm-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+  .adm-stat{background:#fff;border:1px solid #e2d6c2;border-radius:10px;padding:12px 14px}
+  .adm-stat .n{font-size:24px;font-weight:700;color:#6b4e24;line-height:1}
+  .adm-stat .l{font-size:11px;opacity:.75;margin-top:5px;text-transform:uppercase;letter-spacing:.04em}
+  .adm-stat.hl{background:#6b4e24;border-color:#6b4e24}
+  .adm-stat.hl .n,.adm-stat.hl .l{color:#fff;opacity:1}
+  .adm-invite{background:#fff;border:1px solid #e2d6c2;border-radius:12px;padding:18px;margin-bottom:22px}
+  .adm-invite h3{font-size:15px;color:#6b4e24;margin-bottom:4px}
+  .adm-invite p{font-size:12.5px;opacity:.8;margin-bottom:14px}
+  .adm-invite-row{display:flex;gap:10px;flex-wrap:wrap}
+  .adm-invite-row input{flex:1;min-width:200px;font-size:16px;padding:10px 13px;border:1px solid #e2d6c2;border-radius:8px;outline:none;font-family:inherit}
+  .adm-invite-out{margin-top:12px;display:none}
+  .adm-invite-out.on{display:block}
+  .adm-lk{font-size:13px;background:#faf6ee;border:1px solid #e2d6c2;border-radius:8px;padding:11px 13px;word-break:break-all;color:#6b4e24}
+  .adm-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .adm-chip{font-size:12.5px;padding:7px 14px;border-radius:20px;border:1px solid #e2d6c2;background:#fff;cursor:pointer}
+  .adm-chip.on{background:#6b4e24;color:#fff;border-color:#6b4e24}
+  .adm-card{background:#fff;border:1px solid #e2d6c2;border-radius:12px;overflow:hidden;margin-bottom:22px}
+  .adm-hd{padding:14px 18px;border-bottom:1px solid #efe6d6;font-weight:600;color:#6b4e24;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+  .adm-cnt{font-size:12px;opacity:.7;font-weight:400;color:#2a2219}
+  .admin-root table{width:100%;border-collapse:collapse}
+  .admin-root th,.admin-root td{text-align:left;padding:11px 14px;font-size:13.5px;border-bottom:1px solid #efe6d6;vertical-align:top}
+  .admin-root th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#8a6a3a;background:#faf6ee;font-weight:600}
+  .admin-root tr:last-child td{border-bottom:none}
+  .adm-tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:12px;white-space:nowrap}
+  .adm-tag.yes{background:#e3f2e8;color:#2f7a4a}
+  .adm-tag.no{background:#fbe3e6;color:#a4473a}
+  .adm-wishcol{max-width:360px;white-space:pre-wrap;word-break:break-word}
+  .adm-del{color:#a4473a;background:none;border:none;cursor:pointer;font-size:12.5px;padding:4px 6px;border-radius:6px;font-family:inherit}
+  .adm-del:hover{background:#fbe3e6}
+  .adm-empty,.adm-loading{padding:26px;text-align:center;opacity:.75;font-size:13.5px}
+  .adm-muted{color:#9a8566;font-size:12px}
+  @media(max-width:560px){
+    .adm-wishcol{max-width:none}
+    .admin-root th.hide-m,.admin-root td.hide-m{display:none}
+    .admin-root th,.admin-root td{padding:10px 10px}
+  }
 </style>
 </head>
 <body>
@@ -1229,16 +1289,11 @@
   document.addEventListener('scroll',arm,{once:false});
 })();
 
-/* ===== Xác nhận tham dự + Lời chúc — Cloudflare D1 backend ===== */
+/* ===== Xác nhận tham dự + Lời chúc — Firebase (collection rsvp_hoangnhu) ===== */
 (function(){
-  var API = '/api/wishes';
   var $ = function(id){ return document.getElementById(id); };
   var nameEl=$('wName'), msgEl=$('wMsg'), hpEl=$('wHp'), btn=$('wSubmit'), note=$('wNote'), list=$('wList');
-  var attend='', guests=1, sending=false, demo=false;
-
-  var adminKey = new URLSearchParams(location.search).get('admin') || '';
-  if(!adminKey){ $('tYes').parentElement.style.display='none'; $('tGuests').parentElement.style.display='none'; }
-  if(adminKey){ document.body.classList.add('admin'); }
+  var attend='', guests=1, sending=false, last=[];
 
   /* tên khách qua link: ?to=Anh+Minh */
   var to = new URLSearchParams(location.search).get('to');
@@ -1248,10 +1303,13 @@
     var personal=$('personalInvite');
     if(personalName && personal){ $('personalName').textContent=personalName; personal.hidden=false; }
   }
+  /* số khách sẽ đến chỉ xem trong dashboard #admin */
+  $('tYes').parentElement.style.display='none'; $('tGuests').parentElement.style.display='none';
 
-  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function setNote(t, ok){ note.textContent=t; note.className='wish-note '+(ok?'ok':'err'); }
+  function whenDB(cb){ if(window.WeddingDB) cb(); else window.addEventListener('weddingdb-ready', cb, {once:true}); }
 
   $('vote').addEventListener('click', function(e){
     var b=e.target.closest('button'); if(!b) return;
@@ -1262,41 +1320,29 @@
   $('gMinus').onclick=function(){ guests=Math.max(1,guests-1); $('gNum').textContent=guests; };
   $('gPlus').onclick=function(){ guests=Math.min(10,guests+1); $('gNum').textContent=guests; };
 
-  function local(){ try{ return JSON.parse(localStorage.getItem('hn_rsvp')||'[]'); }catch(e){ return []; } }
-  function saveLocal(a){ try{ localStorage.setItem('hn_rsvp', JSON.stringify(a)); }catch(e){} }
-
+  function isYes(x){ return x.attend==='Có tham dự'; }
   function render(items){
     items = items || []; last = items;
     var yes=0, g=0, w=0;
-    items.forEach(function(it){ if(it.attend==='yes'){ yes++; g+=(+it.guests||1); } if(it.message) w++; });
-    if(adminKey){ $('tYes').textContent=yes; $('tGuests').textContent=g; }
-    $('tWish').textContent=w;
-    var shown = adminKey ? items : items.filter(function(it){ return it.message; });
+    items.forEach(function(it){ if(isYes(it)){ yes++; g+=(parseInt(it.numGuest,10)||1); } if(it.wish && it.wish.trim()) w++; });
+    $('tYes').textContent=yes; $('tGuests').textContent=g; $('tWish').textContent=w;
+    var shown = items.filter(function(it){ return it.wish && it.wish.trim(); });
     list.innerHTML='';
     if(!shown.length){
       list.innerHTML='<div class="wish-empty">'+T('Hãy là người đầu tiên gửi lời chúc 💌','Be the first to send your wishes 💌')+'</div>'; return;
     }
     shown.forEach(function(it){
-      var tag = it.attend==='yes' ? '<span class="wc-tag">'+T('Sẽ đến','Attending')+(it.guests>1?' · '+it.guests+T(' người',' guests'):'')+'</span>'
-              : it.attend==='no' ? '<span class="wc-tag no">'+T('Vắng mặt','Not attending')+'</span>' : '';
+      var n=parseInt(it.numGuest,10)||1;
+      var tag = isYes(it) ? '<span class="wc-tag">'+T('Sẽ đến','Attending')+(n>1?' · '+n+T(' người',' guests'):'')+'</span>'
+              : it.attend ? '<span class="wc-tag no">'+T('Vắng mặt','Not attending')+'</span>' : '';
       var card=document.createElement('div'); card.className='wish-card';
-      var del = adminKey ? '<button class="wc-del" data-id="'+esc(it.id)+'" title="Xoá">×</button>' : '';
-      card.innerHTML = del +
-        '<div class="wc-msg">'+(it.message?esc(it.message):'<span style="opacity:.5">'+T('(không có lời chúc)','(no message)')+'</span>')+'</div>'+
-        '<div class="wc-from"><span>— '+esc(it.name)+'</span>'+tag+'</div>';
+      card.innerHTML = '<div class="wc-msg">'+esc(it.wish)+'</div>'+
+        '<div class="wc-from"><span>— '+esc(it.guestName)+'</span>'+tag+'</div>';
       list.appendChild(card);
     });
-    if(adminKey){
-      list.querySelectorAll('.wc-del').forEach(function(b){
-        b.addEventListener('click', function(){ delWish(b.dataset.id); });
-      });
-    }
   }
-
   function load(){
-    fetch(API+(adminKey?'?admin='+encodeURIComponent(adminKey):'')).then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(d){ render(d.wishes||[]); if(!adminKey){ $('tWish').textContent=(d.totals&&d.totals.wishes)||0; } })
-      .catch(function(){ demo=true; render([]); setNote(T('Chưa kết nối dữ liệu trực tuyến.','Cannot connect to online RSVP data.'), false); });
+    whenDB(function(){ window.WeddingDB.loadAll().then(render).catch(function(e){ console.error(e); render([]); }); });
   }
 
   function submit(){
@@ -1306,33 +1352,21 @@
     if(hpEl.value){ return; }
     if(name.length<2){ setNote(T('Bạn nhập tên giúp mình nha','Please enter your name'), false); return; }
     if(!attend){ setNote(T('Bạn chọn giúp mình có đến được không nha','Please let us know if you can attend'), false); return; }
-    var body={ name:name, message:msg, attend:attend, guests: attend==='yes'?guests:0, hp:hpEl.value };
-    var done=function(){
-      setNote(attend==='yes' ? T('Cảm ơn bạn, hẹn gặp bạn ngày vui 💛','Thank you, see you on our big day 💛') : T('Cảm ơn lời chúc của bạn 💛','Thank you for your wishes 💛'), true);
-      msgEl.value=''; load();
-    };
     sending=true; btn.disabled=true; setNote(T('Đang gửi...','Sending...'), true);
-    if(demo){
-      setNote(T('Chưa kết nối máy chủ. Vui lòng thử lại sau.','Server unavailable. Please try again later.'), false);
-      sending=false; btn.disabled=false; return;
-    }
-    fetch(API, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) })
-    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
-    .then(function(res){ if(res.ok){ done(); } else { setNote(LANG==='en' ? 'Something went wrong, please try again' : (res.d.error || 'Có lỗi xảy ra, thử lại nhé'), false); } })
-    .catch(function(){ setNote(T('Mất kết nối, thử lại sau nhé','Connection lost, please try again'), false); })
-    .finally(function(){ sending=false; btn.disabled=false; });
+    whenDB(function(){
+      window.WeddingDB.submit({
+        guestName:name, invitedAs: to||'', attend: attend==='yes'?'Có tham dự':'Không tham dự',
+        numGuest: attend==='yes'?guests:0, wish:msg, lang:LANG
+      }).then(function(){
+        setNote(attend==='yes' ? T('Cảm ơn bạn, hẹn gặp bạn ngày vui 💛','Thank you, see you on our big day 💛') : T('Cảm ơn lời chúc của bạn 💛','Thank you for your wishes 💛'), true);
+        msgEl.value=''; load();
+      }).catch(function(e){ console.error(e); setNote(T('Gửi chưa được, thử lại sau nhé','Could not send, please try again'), false); })
+      .finally(function(){ sending=false; btn.disabled=false; });
+    });
   }
 
-  function delWish(id){
-    if(!confirm('Xoá mục này?')) return;
-    if(demo){ saveLocal(local().filter(function(x){ return x.id!==id; })); return load(); }
-    fetch(API+'?id='+encodeURIComponent(id)+'&admin='+encodeURIComponent(adminKey), {method:'DELETE'})
-      .then(function(r){ if(r.ok){ load(); } else { alert('Xoá thất bại'); } })
-      .catch(function(){ alert('Lỗi kết nối'); });
-  }
-
-  var last=[];
   window.__rerender=function(){ render(last); };
+  window.__reloadWishes=load;
   btn.addEventListener('click', submit);
   load();
 })();
@@ -1341,6 +1375,222 @@
     try{ saved = localStorage.getItem('hn_lang'); }catch(e){}
     setLang(q || saved || 'vi');
   })();
+</script>
+
+<!-- ===== Firebase (RSVP + lưu bút) ===== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKojhw5-SFWukGSN_oSjw5vxJngrfIogo",
+    authDomain: "vo-iu-dino-848d2.firebaseapp.com",
+    projectId: "vo-iu-dino-848d2",
+    storageBucket: "vo-iu-dino-848d2.firebasestorage.app",
+    messagingSenderId: "879023470388",
+    appId: "1:879023470388:web:ecc9128f6f280b26249761"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const COL = "rsvp_hoangnhu";
+
+  window.WeddingDB = {
+    async submit(d){
+      return addDoc(collection(db, COL), {
+        guestName: d.guestName || "",
+        invitedAs: d.invitedAs || "",
+        attend:    d.attend || "",
+        side:      d.side || "",
+        numGuest:  d.numGuest || 0,
+        wish:      d.wish || "",
+        lang:      d.lang || "vi",
+        createdAt: serverTimestamp()
+      });
+    },
+    async loadAll(){
+      const snap = await getDocs(query(collection(db, COL), orderBy("createdAt","desc")));
+      const out = []; snap.forEach(x => out.push({ id:x.id, ...x.data() })); return out;
+    },
+    async remove(id){ return deleteDoc(doc(db, COL, id)); }
+  };
+  window.dispatchEvent(new Event("weddingdb-ready"));
+</script>
+
+<!-- ============ ADMIN (mở bằng #admin ở cuối link) ============ -->
+<div class="admin-root" id="adminRoot">
+  <div class="adm-wrap">
+    <div class="adm-gate" id="admGate">
+      <h2>Trang quản trị</h2>
+      <p>Thiệp cưới Huy Hoàng &amp; Gia Như</p>
+      <input type="password" id="admPw" placeholder="Nhập mật khẩu" autocomplete="off">
+      <button id="admPwBtn">Vào</button>
+      <div class="adm-err" id="admPwErr"></div>
+      <a class="adm-back" href="#">← Về thiệp</a>
+    </div>
+    <div class="adm-app" id="admApp">
+      <div class="adm-top">
+        <div>
+          <h1>Quản trị thiệp cưới</h1>
+          <div class="adm-sub">Huy Hoàng &amp; Gia Như · 13.12.2026 · Luxury Palace</div>
+        </div>
+        <div class="adm-actions">
+          <button class="adm-btn" id="admReload">↻ Tải lại</button>
+          <button class="adm-btn solid" id="admCsv">⬇ Xuất CSV</button>
+          <a class="adm-btn" href="#">Về thiệp</a>
+        </div>
+      </div>
+      <div class="adm-stats" id="admStats"></div>
+
+      <div class="adm-invite">
+        <h3>Tạo link mời có tên khách</h3>
+        <p>Nhập tên khách, link tạo ra sẽ điền sẵn tên vào form xác nhận.</p>
+        <div class="adm-invite-row">
+          <input type="text" id="admGuestFor" placeholder="Tên khách (vd: Anh Minh &amp; gia đình)">
+          <button class="adm-btn solid" id="admMkLink">Tạo link</button>
+        </div>
+        <div class="adm-invite-out" id="admLinkOut">
+          <div class="adm-lk" id="admLinkText"></div>
+          <button class="adm-btn" id="admCopyLink" style="margin-top:8px">Sao chép</button>
+        </div>
+      </div>
+
+      <div class="adm-filters" id="admFilters">
+        <div class="adm-chip on" data-f="all">Tất cả</div>
+        <div class="adm-chip" data-f="yes">Sẽ đến</div>
+        <div class="adm-chip" data-f="no">Không đến</div>
+      </div>
+
+      <div class="adm-card">
+        <div class="adm-hd">Xác nhận tham dự <span class="adm-cnt" id="admRsvpCnt"></span></div>
+        <div id="admRsvpBody"><div class="adm-loading">Đang tải…</div></div>
+      </div>
+      <div class="adm-card">
+        <div class="adm-hd">Sổ lưu bút <span class="adm-cnt" id="admWishCnt"></span></div>
+        <div id="admWishBody"><div class="adm-loading">Đang tải…</div></div>
+      </div>
+      <div class="adm-muted">Xoá một mục là xoá vĩnh viễn khỏi cơ sở dữ liệu, không khôi phục được.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ==== ĐỔI MẬT KHẨU ADMIN Ở ĐÂY ==== */
+  var ADMIN_PASSWORD = "hoangnhu2026";
+  /* =================================== */
+
+  var root=document.getElementById('adminRoot'), gate=document.getElementById('admGate'), appEl=document.getElementById('admApp'),
+      ALL=[], filt="all", loadedOnce=false;
+
+  function isAdmin(){ return location.hash.toLowerCase()==="#admin"; }
+  function route(){
+    if(isAdmin()){
+      root.classList.add('on'); document.body.classList.add('adm-on');
+      var ok=false; try{ ok=sessionStorage.getItem('hn_admin')==='1'; }catch(e){}
+      if(ok) showApp();
+      else { gate.style.display='block'; appEl.classList.remove('on'); setTimeout(function(){document.getElementById('admPw').focus();},50); }
+    } else { root.classList.remove('on'); document.body.classList.remove('adm-on'); }
+  }
+  window.addEventListener('hashchange', route);
+
+  function tryLogin(){
+    if(document.getElementById('admPw').value===ADMIN_PASSWORD){ try{sessionStorage.setItem('hn_admin','1');}catch(e){} showApp(); }
+    else document.getElementById('admPwErr').textContent='Mật khẩu chưa đúng.';
+  }
+  document.getElementById('admPwBtn').addEventListener('click', tryLogin);
+  document.getElementById('admPw').addEventListener('keydown', function(e){ if(e.key==='Enter') tryLogin(); });
+
+  function showApp(){ gate.style.display='none'; appEl.classList.add('on'); if(!loadedOnce){ loadedOnce=true; load(); } }
+  function whenDB(cb){ if(window.WeddingDB) cb(); else window.addEventListener('weddingdb-ready', cb, {once:true}); }
+
+  function load(){
+    document.getElementById('admRsvpBody').innerHTML='<div class="adm-loading">Đang tải…</div>';
+    document.getElementById('admWishBody').innerHTML='<div class="adm-loading">Đang tải…</div>';
+    whenDB(function(){
+      window.WeddingDB.loadAll().then(function(list){ ALL=list; render(); })
+        .catch(function(err){ document.getElementById('admRsvpBody').innerHTML='<div class="adm-empty">Lỗi tải: '+esc(err.message)+'</div>'; document.getElementById('admWishBody').innerHTML=''; console.error(err); });
+    });
+  }
+  document.getElementById('admReload').addEventListener('click', load);
+
+  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function fmtDate(ts){ if(!ts) return ''; var d=ts.toDate?ts.toDate():new Date(ts); return d.toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }
+  function yes(x){ return x.attend==='Có tham dự'; }
+  function n(x){ return yes(x)?(parseInt(x.numGuest,10)||0):0; }
+  function stat(v,l,hl){ return '<div class="adm-stat'+(hl?' hl':'')+'"><div class="n">'+v+'</div><div class="l">'+l+'</div></div>'; }
+
+  function render(){
+    var rs=ALL.filter(function(x){return x.attend;});
+    var wishes=ALL.filter(function(x){return x.wish && x.wish.trim();});
+    var going=rs.filter(yes), sum=function(a){return a.reduce(function(s,x){return s+n(x);},0);};
+    document.getElementById('admStats').innerHTML=
+      stat(sum(going),'Tổng khách sẽ đến',true)+stat(rs.length,'Lượt phản hồi')+stat(going.length,'Phản hồi sẽ đến')+
+      stat(rs.length-going.length,'Không đến')+stat(wishes.length,'Lời chúc');
+
+    var list=rs.filter(function(x){ if(filt==='yes') return yes(x); if(filt==='no') return !yes(x); return true; });
+    document.getElementById('admRsvpCnt').textContent=list.length+' lượt · '+sum(list)+' khách';
+    if(!list.length) document.getElementById('admRsvpBody').innerHTML='<div class="adm-empty">Chưa có xác nhận nào.</div>';
+    else {
+      var h='<table><thead><tr><th>Khách</th><th>Tham dự</th><th>SL</th><th class="hide-m">Lúc</th><th></th></tr></thead><tbody>';
+      list.forEach(function(x){
+        h+='<tr><td><b>'+esc(x.guestName)+'</b>'+(x.invitedAs&&x.invitedAs!==x.guestName?'<br><span class="adm-muted">mời: '+esc(x.invitedAs)+'</span>':'')+'</td>'+
+           '<td><span class="adm-tag '+(yes(x)?'yes':'no')+'">'+(yes(x)?'Sẽ đến':'Không đến')+'</span></td>'+
+           '<td>'+(yes(x)?n(x):'–')+'</td>'+
+           '<td class="hide-m adm-muted">'+esc(fmtDate(x.createdAt))+'</td>'+
+           '<td><button class="adm-del" data-id="'+x.id+'">Xoá</button></td></tr>';
+      });
+      document.getElementById('admRsvpBody').innerHTML=h+'</tbody></table>';
+    }
+
+    document.getElementById('admWishCnt').textContent=wishes.length+' lời chúc';
+    if(!wishes.length) document.getElementById('admWishBody').innerHTML='<div class="adm-empty">Chưa có lời chúc nào.</div>';
+    else {
+      var h2='<table><thead><tr><th>Người gửi</th><th>Lời chúc</th><th class="hide-m">Lúc</th><th></th></tr></thead><tbody>';
+      wishes.forEach(function(x){
+        h2+='<tr><td><b>'+esc(x.guestName)+'</b></td><td class="adm-wishcol">'+esc(x.wish)+'</td>'+
+            '<td class="hide-m adm-muted">'+esc(fmtDate(x.createdAt))+'</td>'+
+            '<td><button class="adm-del" data-id="'+x.id+'">Xoá</button></td></tr>';
+      });
+      document.getElementById('admWishBody').innerHTML=h2+'</tbody></table>';
+    }
+    root.querySelectorAll('.adm-del').forEach(function(b){ b.addEventListener('click', function(){ removeItem(b.getAttribute('data-id')); }); });
+  }
+
+  function removeItem(id){
+    var it=ALL.filter(function(x){return x.id===id;})[0];
+    if(!confirm('Xoá "'+(it&&it.guestName||'mục này')+'"? Không khôi phục được.')) return;
+    window.WeddingDB.remove(id).then(function(){ ALL=ALL.filter(function(x){return x.id!==id;}); render(); if(window.__reloadWishes) window.__reloadWishes(); })
+      .catch(function(err){ alert('Xoá không được: '+err.message); });
+  }
+
+  document.getElementById('admFilters').addEventListener('click', function(e){
+    var c=e.target.closest('.adm-chip'); if(!c) return;
+    root.querySelectorAll('.adm-chip').forEach(function(x){x.classList.remove('on');});
+    c.classList.add('on'); filt=c.getAttribute('data-f'); render();
+  });
+
+  document.getElementById('admCsv').addEventListener('click', function(){
+    var rows=[['Khách','Mời với tên','Tham dự','Số khách','Lời chúc','Thời gian']];
+    ALL.forEach(function(x){ rows.push([x.guestName||'',x.invitedAs||'',x.attend||'',yes(x)?n(x):0,x.wish||'',fmtDate(x.createdAt)]); });
+    var csv='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+    var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.download='khach-moi-hoang-nhu.csv'; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  document.getElementById('admMkLink').addEventListener('click', function(){
+    var name=document.getElementById('admGuestFor').value.trim(); if(!name){ alert('Nhập tên khách.'); return; }
+    var p=new URLSearchParams(location.search); p.set('to',name);
+    var link=location.origin+location.pathname+'?'+p.toString().replace(/\+/g,'%20');
+    document.getElementById('admLinkText').textContent=link; document.getElementById('admLinkOut').classList.add('on');
+    document.getElementById('admCopyLink').onclick=function(){
+      var b=this; (navigator.clipboard?navigator.clipboard.writeText(link):Promise.reject()).then(function(){ b.textContent='Đã chép ✓'; setTimeout(function(){b.textContent='Sao chép';},1500); })
+        .catch(function(){ prompt('Chép link:',link); });
+    };
+  });
+
+  route();
+})();
 </script>
 
 </body>

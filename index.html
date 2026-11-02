@@ -156,10 +156,10 @@
   }
   @keyframes fadeIn{to{opacity:1}}
 
-  .hero-scene{align-items:flex-end;padding-bottom:13vh;background:linear-gradient(180deg,#dfe7ef 0%,#ece6ee 45%,#f6ebe3 100%)}
+  .hero-scene{align-items:flex-end;padding-bottom:calc(8vh + 70px);background:linear-gradient(180deg,#dfe7ef 0%,#ece6ee 45%,#f6ebe3 100%)}
   .hero-scene .scene-img{filter: saturate(.9) brightness(1.03); transform:none}
   .hero-scene::after{display:none}
-  .hero-title{display:none!important;text-align:center; color: var(--film-cream); position:relative; z-index:2; padding:22px 18px; background:rgba(246,242,235,.72); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); border-radius:4px}
+  .hero-title{text-align:center; color: var(--film-cream); position:relative; z-index:2; padding:22px 18px; background:rgba(246,242,235,.72); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); border-radius:4px}
   .hero-loc{
     font-family:'Archivo', sans-serif;
     font-size: 11px; letter-spacing:.5em; text-transform:uppercase;
@@ -982,6 +982,15 @@
   #gate.open .op-to,#gate.open .ld-play{opacity:0;pointer-events:none}
   #gate.open .g-inner img{transform:scale(1)}
   #gate.open .g-names{opacity:1;transform:none}
+  /* ảnh bìa: khung tên gọn, nằm sát đáy để lộ mặt */
+  .hero-scene .hero-title{padding:14px 14px 16px}
+  .hero-scene .hero-loc{margin-bottom:14px;padding:6px 14px;font-size:9px}
+  .hero-scene .hero-subtitle{margin-top:8px}
+  .hero-scene .quick-nav{margin-top:12px}
+  #toTop{position:fixed;right:18px;bottom:calc(11vh + 58px);z-index:9997;width:44px;height:44px;border-radius:50%;border:1px solid var(--film-warm);background:rgba(250,247,240,.92);color:var(--film-warm);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 12px rgba(60,55,45,.15)}
+  #toTop.show{opacity:1;pointer-events:auto}
+  #toTop svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+  @media (max-width:600px){#toTop{bottom:calc(5.5vh + 70px)} .hero-scene{padding-bottom:calc(5.5vh + 66px)!important}}
 </style>
 </head>
 <body>
@@ -1246,6 +1255,7 @@
   </div>
 </section>
 
+<button id="toTop" type="button" aria-label="Lên đầu thiệp"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
 <div id="langSw"><button type="button" data-l="vi" class="on">VI</button><button type="button" data-l="en">EN</button></div>
 
 <!-- music player -->
@@ -1403,6 +1413,7 @@
   updateTimecode();
 
   /* bỏ parallax zoom ảnh cho ảnh nét */
+  (function(){var t=document.getElementById('toTop');if(!t)return;function u(){t.classList.toggle('show',scrollY>window.innerHeight*1.5)}addEventListener('scroll',u,{passive:true});u();t.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});})();
 
 
   const target = new Date('2026-12-13T18:00:00+07:00').getTime();

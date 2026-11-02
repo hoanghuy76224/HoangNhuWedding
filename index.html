@@ -1262,7 +1262,7 @@
     }
     var guest=(new URLSearchParams(location.search).get('to')||'').trim().slice(0,80);
     if(guest){ var g=document.getElementById('ldGuest'); g.textContent=guest; g.removeAttribute('data-en-keep'); }
-    else { var g2=document.getElementById('ldGuest'); g2.setAttribute('data-en','your family'); }
+    else { var g2=document.getElementById('ldGuest'); g2.setAttribute('data-en','family'); }
     if(location.hash.toLowerCase()==='#admin'){ L.remove(); openBars(); return; }
     document.body.style.overflow='hidden';
     function beep(){

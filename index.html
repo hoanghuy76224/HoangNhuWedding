@@ -1264,7 +1264,6 @@
 
 <!-- music player -->
 <div id="bgmPlayer" style="position:fixed;bottom:11vh;right:18px;z-index:9997;display:none;align-items:center;gap:10px;">
-  <span id="bgmLabel" style="font-family:'Archivo',sans-serif;font-size:9px;letter-spacing:.15em;color:var(--film-warm);text-transform:uppercase;opacity:.7;background:rgba(10,8,6,.6);padding:5px 9px;border:1px solid rgba(201,168,118,.3);backdrop-filter:blur(4px);transition:opacity .4s;">You Smelled of Roses ♪</span>
   <button id="bgmBtn" aria-label="Bật/tắt nhạc" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--film-warm);background:rgba(10,8,6,.6);color:var(--film-warm);cursor:pointer;backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;">
     <span id="bgmIcon">♫</span>
   </button>
@@ -1498,15 +1497,15 @@
   var audio=document.getElementById('bgmAudio');
   var btn=document.getElementById('bgmBtn');
   var icon=document.getElementById('bgmIcon');
-  var label=document.getElementById('bgmLabel');
+
   var player=document.getElementById('bgmPlayer');
   var playing=false;
   audio.volume=0.6;
   function showPlayer(){ player.style.display='flex'; }
   if(audio.readyState>0) showPlayer();
   audio.addEventListener('loadedmetadata', showPlayer);
-  function play(){ audio.play().then(function(){playing=true;icon.textContent='❚❚';btn.style.background='var(--film-warm)';btn.style.color='var(--film-bg)';label.style.opacity='1';}).catch(function(e){console.warn('audio play failed:',e);}); }
-  function pause(){ audio.pause();playing=false;icon.textContent='♫';btn.style.background='rgba(10,8,6,.6)';btn.style.color='var(--film-warm)';label.style.opacity='.7'; }
+  function play(){ audio.play().then(function(){playing=true;icon.textContent='❚❚';btn.style.background='var(--film-warm)';btn.style.color='var(--film-bg)';}).catch(function(e){console.warn('audio play failed:',e);}); }
+  function pause(){ audio.pause();playing=false;icon.textContent='♫';btn.style.background='rgba(10,8,6,.6)';btn.style.color='var(--film-warm)'; }
   btn.addEventListener('click',function(){ playing?pause():play(); });
   var armed=false;
   function arm(){ if(armed)return; armed=true; play(); document.removeEventListener('click',arm); document.removeEventListener('touchstart',arm); document.removeEventListener('scroll',arm); }

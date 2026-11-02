@@ -1,12 +1,51 @@
 // Cloudflare Pages Function: /api/wishes  (binding D1: DB, biến môi trường: ADMIN_KEY)
 const J = (d, s = 200) => new Response(JSON.stringify(d), { status: s, headers: { 'Content-Type': 'application/json' } });
 
+// Firebase Google authentication: verify signed ID tokens on Cloudflare Workers.
+async function authorized(request, env) {
+  if (!env.FIREBASE_PROJECT_ID || !env.FIREBASE_ADMIN_UID) return false;
+  const header = request.headers.get('Authorization') || '';
+  if (!header.startsWith('Bearer ')) return false;
+  const token = header.slice(7);
+  const parts = token.split('.');
+  if (parts.length !== 3 || token.length > 10000) return false;
+  const decode = value => JSON.parse(atob(value.replace(/-/g, '+').replace(/_/g, '/')));
+  let hdr, claims;
+  try { hdr = decode(parts[0]); claims = decode(parts[1]); } catch { return false; }
+  const now = Math.floor(Date.now() / 1000);
+  if (hdr.alg !== 'RS256' || !hdr.kid ||
+      claims.aud !== env.FIREBASE_PROJECT_ID ||
+      claims.iss !== 'https://securetoken.google.com/' + env.FIREBASE_PROJECT_ID ||
+      claims.sub !== env.FIREBASE_ADMIN_UID ||
+      typeof claims.exp !== 'number' || claims.exp <= now ||
+      typeof claims.iat !== 'number' || claims.iat > now ||
+      typeof claims.auth_time !== 'number' || claims.auth_time > now ||
+      claims.firebase?.sign_in_provider !== 'google.com') return false;
+  try {
+    const certsResponse = await fetch('https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com');
+    if (!certsResponse.ok) return false;
+    const certs = await certsResponse.json();
+    const pem = certs[hdr.kid];
+    if (!pem) return false;
+    // X.509 certificate wrapping the RSA public key; import with WebCrypto.
+    // Use Google JWKS endpoint instead for direct RSA JWK verification.
+    const jwksResponse = await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com');
+    if (!jwksResponse.ok) return false;
+    const jwks = await jwksResponse.json();
+    const jwk = (jwks.keys || []).find(k => k.kid === hdr.kid && k.kty === 'RSA');
+    if (!jwk) return false;
+    const key = await crypto.subtle.importKey('jwk', jwk, {name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'}, false, ['verify']);
+    const binary = atob(parts[2].replace(/-/g,'+').replace(/_/g,'/'));
+    const sig = Uint8Array.from(binary, c=>c.charCodeAt(0));
+    return await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, sig, new TextEncoder().encode(parts[0]+'.'+parts[1]));
+  } catch { return false; }
+}
+
 export async function onRequestGet({ request, env }) {
   const u = new URL(request.url);
-  const key = request.headers.get('X-Admin-Key') || u.searchParams.get('admin');
-  const authorized = Boolean(env.ADMIN_KEY && key === env.ADMIN_KEY);
-  if (u.searchParams.has('dashboard') && !authorized) return J({ error: 'Không có quyền' }, 403);
-  if (authorized) {
+  const isAdmin = await authorized(request, env);
+  if (u.searchParams.has('dashboard') && !isAdmin) return J({ error: 'Không có quyền' }, 403);
+  if (isAdmin) {
     const { results } = await env.DB.prepare(
       'SELECT id,name,message,attend,guests,created_at FROM wishes ORDER BY id DESC'
     ).all();
@@ -38,7 +77,7 @@ export async function onRequestPost({ request, env }) {
 
 export async function onRequestDelete({ request, env }) {
   const u = new URL(request.url);
-  if (!env.ADMIN_KEY || (request.headers.get('X-Admin-Key') || u.searchParams.get('admin')) !== env.ADMIN_KEY) return J({ error: 'Không có quyền' }, 403);
+  if (!await authorized(request, env)) return J({ error: 'Không có quyền' }, 403);
   await env.DB.prepare('DELETE FROM wishes WHERE id=?').bind(u.searchParams.get('id')).run();
   return J({ ok: true });
 }

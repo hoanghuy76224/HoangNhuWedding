@@ -1268,6 +1268,7 @@
   <source src="music.m4a" type="audio/mp4">
 </audio>
 
+<script src="invite-links.js"></script>
 <script>
   /* ===== NGÔN NGỮ VI / EN ===== */
   var LANG = 'vi';
@@ -1506,14 +1507,34 @@
   var nameEl=$('wName'), msgEl=$('wMsg'), hpEl=$('wHp'), btn=$('wSubmit'), note=$('wNote'), list=$('wList');
   var attend='', guests=1, sending=false, last=[];
 
-  /* tên khách qua link: ?to=Anh+Minh */
-  var to = new URLSearchParams(location.search).get('to');
-  if(to){
-    var personalName=to.trim().slice(0,80);
-    nameEl.value=personalName.slice(0,40);
-    var personal=$('personalInvite');
-    if(personalName && personal){ $('personalName').textContent=personalName; personal.hidden=false; }
+  /* Keep legacy ?to links; short codes resolve before RSVP can be sent. */
+  var params = new URLSearchParams(location.search), to = '', invitePending = false, inviteError = false;
+  function applyGuest(value){
+    to = value.trim().slice(0,80);
+    if(!nameEl.value) nameEl.value=to.slice(0,40);
+    var gate=$('ldGuest');
+    if(gate){ gate.removeAttribute('data-en'); gate.removeAttribute('data-vi'); gate.textContent=to; }
+    $('personalName').textContent=to; $('personalInvite').hidden=false;
   }
+  function resolveInvite(){
+    invitePending=true; inviteError=false; btn.disabled=true;
+    var gate=$('ldGuest');
+    if(gate){ gate.removeAttribute('data-en'); gate.removeAttribute('data-vi'); gate.textContent=T('Đang tải lời mời…','Loading invitation…'); }
+    window.InviteLinks.resolve(params.get('k')).then(function(value){
+      applyGuest(value); setNote('',true); inviteError=false;
+      $('inviteRetry').hidden=true;
+    }).catch(function(){
+      inviteError=true;
+      if(gate) gate.textContent=T('quý khách','our guest');
+      setNote(T('Chưa tải được tên trên lời mời. Bạn thử lại hoặc liên hệ cô dâu/chú rể nhé.','Could not load your invitation. Please retry or contact the couple.'),false);
+      $('inviteRetry').hidden=false;
+    }).finally(function(){ invitePending=false; btn.disabled=inviteError; });
+  }
+  if(params.has('k')){
+    var retry=document.createElement('button'); retry.id='inviteRetry'; retry.type='button';
+    retry.textContent='Tải lại lời mời / Retry'; retry.hidden=true; retry.onclick=resolveInvite;
+    note.parentNode.insertBefore(retry,note.nextSibling); resolveInvite();
+  } else if(params.get('to')) applyGuest(params.get('to'));
   /* số khách sẽ đến chỉ xem trong dashboard #admin */
   $('tYes').parentElement.style.display='none'; $('tGuests').parentElement.style.display='none';
 
@@ -1557,7 +1578,7 @@
   }
 
   function submit(){
-    if(sending) return;
+    if(sending || invitePending || inviteError) return;
     var name=(nameEl.value||'').trim();
     var msg=(msgEl.value||'').trim();
     if(hpEl.value){ return; }
@@ -1591,6 +1612,8 @@
 <!-- ===== Firebase (RSVP + lưu bút) ===== -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -1604,6 +1627,11 @@
   };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  const auth = getAuth(app);
+  window.getInviteToken = async function(){
+    const user = auth.currentUser || (await signInWithPopup(auth, new GoogleAuthProvider())).user;
+    return user.getIdToken();
+  };
   const COL = "rsvp_hoangnhu";
 
   window.WeddingDB = {
@@ -1655,9 +1683,9 @@
 
       <div class="adm-invite">
         <h3>Tạo link mời có tên khách</h3>
-        <p>Nhập tên khách, link tạo ra sẽ điền sẵn tên vào form xác nhận.</p>
+        <p>Nhập tên khách để tạo link mã ngắn. Lần đầu, đăng nhập Google bằng tài khoản quản trị. Tên được lưu trên Firebase; danh sách link bên dưới lưu trên máy này.</p>
         <div class="adm-invite-row">
-          <input type="text" id="admGuestFor" placeholder="Tên khách (vd: Anh Minh &amp; gia đình)">
+          <input type="text" id="admGuestFor" placeholder="Tên khách (vd: Anh Minh &amp; gia đình)" maxlength="80">
           <button class="adm-btn solid" id="admMkLink">Tạo link</button>
         </div>
         <div class="adm-invite-out" id="admLinkOut">
@@ -1794,7 +1822,6 @@
   var INV_KEY='hn_invites';
   function invLoad(){ try{ return JSON.parse(localStorage.getItem(INV_KEY)||'[]'); }catch(e){ return []; } }
   function invSave(a){ try{ localStorage.setItem(INV_KEY, JSON.stringify(a)); }catch(e){} }
-  function mkLink(name){ var p=new URLSearchParams(); p.set('to',name); return location.origin+location.pathname+'?'+p.toString().replace(/\+/g,'%20'); }
   function copyText(t, b, label){
     (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){ b.textContent='Đã chép ✓'; setTimeout(function(){b.textContent=label;},1500); })
       .catch(function(){ prompt('Chép:',t); });
@@ -1814,13 +1841,19 @@
       copyText(a.map(function(it){ return it.name+': '+it.link; }).join('\n'), this, 'Chép tất cả');
     };
   }
-  document.getElementById('admMkLink').addEventListener('click', function(){
+  document.getElementById('admMkLink').addEventListener('click', async function(){
     var name=document.getElementById('admGuestFor').value.trim(); if(!name){ alert('Nhập tên khách.'); return; }
-    var link=mkLink(name);
-    document.getElementById('admLinkText').textContent=link; document.getElementById('admLinkOut').classList.add('on');
-    document.getElementById('admCopyLink').onclick=function(){ copyText(link,this,'Sao chép'); };
-    var a=invLoad().filter(function(it){ return it.name!==name; }); a.unshift({name:name, link:link, at:Date.now()}); invSave(a);
-    document.getElementById('admGuestFor').value=''; invRender();
+    var button=this, out=document.getElementById('admLinkOut');
+    button.disabled=true; button.textContent='Đang tạo…'; out.classList.remove('on');
+    try{
+      var invitation=await window.InviteLinks.create(name), link=invitation.link;
+      document.getElementById('admLinkText').textContent=link; out.classList.add('on');
+      document.getElementById('admCopyLink').onclick=function(){ copyText(link,this,'Sao chép'); };
+      var a=invLoad().filter(function(it){ return it.name!==invitation.name; });
+      a.unshift({name:invitation.name, link:link, at:Date.now()}); invSave(a);
+      document.getElementById('admGuestFor').value=''; invRender();
+    } catch(error){ alert(error.message || 'Chưa tạo được link, vui lòng thử lại.'); }
+    finally{ button.disabled=false; button.textContent='Tạo link'; }
   });
   invRender();
 

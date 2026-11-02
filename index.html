@@ -892,7 +892,11 @@
   .ld-play:hover{background:rgba(201,168,118,.1)}
   .ld-play svg{width:12px;height:12px;fill:currentColor}
   .ld-count{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1}
-  #leader.run .ld-count{display:flex}
+  #leader.run:not(.vid) .ld-count{display:flex}
+  .ld-video{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#000;z-index:2}
+  #leader.vid .ld-video{display:flex}
+  .ld-video video{width:100%;max-height:100%;object-fit:contain;background:#000}
+  #leader.vid .grain2,#leader.vid .scratch{display:none}
   .ld-dial{position:relative;width:min(72vw,62vh);aspect-ratio:1;border-radius:50%}
   .ld-dial::before,.ld-dial::after{content:'';position:absolute;background:rgba(232,220,196,.35)}
   .ld-dial::before{left:-30%;right:-30%;top:50%;height:1px}
@@ -1014,6 +1018,7 @@
     </div>
     <button class="ld-play" id="ldPlay" type="button"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg><span data-en="Open the invitation">Mở thiệp</span></button>
   </div>
+  <div class="ld-video" id="ldVideo"><video id="ldVid" src="intro.mp4" playsinline webkit-playsinline preload="metadata"></video></div>
   <div class="ld-count"><div class="ld-dial"><div class="ld-sweep" id="ldSweep"></div><div class="ld-ring"></div><div class="ld-num" id="ldNum">3</div></div></div>
   <div class="ld-flash"></div>
   <button class="ld-skip" id="ldSkip" type="button">Skip ›</button>
@@ -1335,11 +1340,23 @@
     }
     function finish(){
       if(done) return; done=true;
+      try{ vid.pause(); }catch(e){}
+      window.__holdMusic=false; if(window.__playMusic) window.__playMusic();
       L.classList.add('flash');
       setTimeout(function(){ L.classList.add('gone'); document.body.style.overflow=''; openBars(); }, 350);
       setTimeout(function(){ L.remove(); }, 1600);
     }
-    function run(){
+    var vid=document.getElementById('ldVid');
+    function runVideo(){
+      window.__holdMusic=true;
+      L.classList.add('run','vid');
+      vid.currentTime=0;
+      vid.addEventListener('ended', finish, {once:true});
+      vid.addEventListener('error', function(){ L.classList.remove('vid'); countdown(); }, {once:true});
+      var p=vid.play(); if(p&&p.catch) p.catch(function(){ L.classList.remove('vid'); countdown(); });
+    }
+    function run(){ if(vid && vid.canPlayType('video/mp4')) runVideo(); else countdown(); }
+    function countdown(){
       L.classList.add('run');
       var n=3, t0=null, per=900;
       function frame(ts){
@@ -1504,8 +1521,9 @@
   function showPlayer(){ player.style.display='flex'; }
   if(audio.readyState>0) showPlayer();
   audio.addEventListener('loadedmetadata', showPlayer);
-  function play(){ audio.play().then(function(){playing=true;icon.textContent='❚❚';btn.style.background='var(--film-warm)';btn.style.color='var(--film-bg)';}).catch(function(e){console.warn('audio play failed:',e);}); }
+  function play(){ if(window.__holdMusic){ try{ audio.play().then(function(){ audio.pause(); }).catch(function(){}); }catch(e){} return; } audio.play().then(function(){playing=true;icon.textContent='❚❚';btn.style.background='var(--film-warm)';btn.style.color='var(--film-bg)';}).catch(function(e){console.warn('audio play failed:',e);}); }
   function pause(){ audio.pause();playing=false;icon.textContent='♫';btn.style.background='rgba(10,8,6,.6)';btn.style.color='var(--film-warm)'; }
+  window.__playMusic=play;
   btn.addEventListener('click',function(){ playing?pause():play(); });
   var armed=false;
   function arm(){ if(armed)return; armed=true; play(); document.removeEventListener('click',arm); document.removeEventListener('touchstart',arm); document.removeEventListener('scroll',arm); }

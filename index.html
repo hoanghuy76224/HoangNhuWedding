@@ -110,7 +110,7 @@
   .scene::after{
     content:'';
     position:absolute; inset:0;
-    background: radial-gradient(ellipse at center, transparent 45%, rgba(244,240,232,.35) 100%), linear-gradient(180deg, transparent 55%, rgba(244,240,232,.92) 100%);
+    background: radial-gradient(ellipse at center, transparent 45%, rgba(244,240,232,.35) 100%), linear-gradient(180deg, transparent 68%, rgba(244,240,232,.8) 100%);
     z-index:1;
   }
   .scene-overlay{
@@ -157,10 +157,10 @@
   }
   @keyframes fadeIn{to{opacity:1}}
 
-  .hero-scene{background:linear-gradient(180deg,#dfe7ef 0%,#ece6ee 45%,#f6ebe3 100%)}
-  .hero-scene .scene-img{filter: saturate(.9) brightness(1.03); transform:none; opacity:.5}
+  .hero-scene{align-items:flex-end;padding-bottom:13vh;background:linear-gradient(180deg,#dfe7ef 0%,#ece6ee 45%,#f6ebe3 100%)}
+  .hero-scene .scene-img{filter: saturate(.9) brightness(1.03); transform:none}
   .hero-scene::after{display:none}
-  .hero-title{text-align:center; color: var(--film-cream); position:relative; z-index:2; padding:0 12px}
+  .hero-title{text-align:center; color: var(--film-cream); position:relative; z-index:2; padding:22px 18px; background:rgba(246,242,235,.72); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); border-radius:4px}
   .hero-loc{
     font-family:'Archivo', sans-serif;
     font-size: 11px; letter-spacing:.5em; text-transform:uppercase;

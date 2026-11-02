@@ -519,6 +519,10 @@
     font-weight: 400;
   }
   .reel-countdown h2 .en{font-size:.4em; margin-top:14px}
+  /* Keep the vow together on its own line across phone sizes. */
+  .reel-countdown h2 .countdown-ido{display:block; white-space:nowrap; margin-top:.12em}
+  /* Never split the venue name between Luxury and Palace. */
+  .venue-nowrap{white-space:nowrap}
   .reel-numbers{
     display:flex; justify-content:center; gap: clamp(24px, 5vw, 80px);
     flex-wrap: wrap;
@@ -941,10 +945,10 @@
       <h3 data-en="Wedding Reception">Tiệc Cưới</h3>
       
       <div class="time" data-en="Sunday · 6:00 PM · 13.12.2026">Chủ Nhật · 18:00 · 13.12.2026</div>
-      <div class="place" data-en="Luxury Palace Wedding &amp;amp; Convention Center&lt;br&gt;Platinum Hall · 1st Floor&lt;br&gt;171 Nguyen Thai Son, Hanh Thong Ward, Ho Chi Minh City">Trung tâm Tiệc cưới &amp; Hội nghị Luxury Palace<br>Sảnh Platinum · Tầng 01<br>171 Nguyễn Thái Sơn, P. Hạnh Thông, TP.HCM</div>
+      <div class="place" data-en="Luxury Palace Wedding &amp;amp; Convention Center&lt;br&gt;Platinum Hall · 1st Floor&lt;br&gt;171 Nguyen Thai Son, Hanh Thong Ward, Ho Chi Minh City">Trung tâm Tiệc cưới &amp; Hội nghị <span class="venue-nowrap">Luxury Palace</span><br>Sảnh Platinum · Tầng 01<br>171 Nguyễn Thái Sơn, P. Hạnh Thông, TP.HCM</div>
       <div class="sub-note" data-en="Guest arrival 6:00 PM · Dinner 6:30 PM">Đón khách 18h00 · Nhập tiệc 18h30</div>
       <div class="sub-note" style="margin-top:6px" data-en="5th day of the 11th lunar month, Year of the Horse">Nhằm ngày 05 tháng 11 năm Bính Ngọ</div>
-      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Luxury+Palace+171+Nguy%E1%BB%85n+Th%C3%A1i+S%C6%A1n+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener">
+      <a class="map-link" href="https://maps.app.goo.gl/UXWDDq2P5nPiGdmt6?g_st=iz" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
         <span data-en="View map">Xem bản đồ</span>
       </a>
@@ -954,7 +958,7 @@
 
 <section class="reel-countdown" data-scene="13" data-name="COUNTDOWN">
   <div class="head">— Time Until Premiere —</div>
-  <h2>The day we say <em>"I do"</em></h2>
+  <h2>The day we say <em class="countdown-ido">"I do"</em></h2>
   <div class="reel-numbers">
     <div class="reel-num"><span class="n" id="cd">00</span><span class="u">Days</span></div>
     <div class="reel-num"><span class="n" id="ch">00</span><span class="u">Hours</span></div>

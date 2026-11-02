@@ -1,11 +1,25 @@
 // Cloudflare Pages Function: /api/wishes  (binding D1: DB, biến môi trường: ADMIN_KEY)
 const J = (d, s = 200) => new Response(JSON.stringify(d), { status: s, headers: { 'Content-Type': 'application/json' } });
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
+  const u = new URL(request.url);
+  const key = request.headers.get('X-Admin-Key') || u.searchParams.get('admin');
+  const authorized = Boolean(env.ADMIN_KEY && key === env.ADMIN_KEY);
+  if (u.searchParams.has('dashboard') && !authorized) return J({ error: 'Không có quyền' }, 403);
+  if (authorized) {
+    const { results } = await env.DB.prepare(
+      'SELECT id,name,message,attend,guests,created_at FROM wishes ORDER BY id DESC'
+    ).all();
+    return J({ wishes: results });
+  }
+  // Public-facing guestbook: do not expose private attendance responses.
   const { results } = await env.DB.prepare(
-    'SELECT id,name,message,attend,guests,created_at FROM wishes ORDER BY id DESC LIMIT 500'
+    "SELECT id,name,message,created_at FROM wishes WHERE TRIM(COALESCE(message,'')) != '' ORDER BY id DESC LIMIT 100"
   ).all();
-  return J({ wishes: results });
+  const stats = await env.DB.prepare(
+    "SELECT COUNT(*) AS wishes FROM wishes WHERE TRIM(COALESCE(message,'')) != ''"
+  ).first();
+  return J({ wishes: results, totals: { wishes: stats.wishes } });
 }
 
 export async function onRequestPost({ request, env }) {

@@ -408,8 +408,11 @@
     transition: opacity 1.4s ease .6s;
     position:relative; z-index:2;
   }
-  .intermission .label::before,
-  .intermission .label::after{
+  /* số chapter một dòng, tên chapter xuống dòng riêng */
+  .intermission .label .ch-no{display:block; white-space:nowrap; padding-left:.6em}
+  .intermission .label .ch-name{display:block; margin-top:12px; padding-left:.6em}
+  .intermission .label .ch-no::before,
+  .intermission .label .ch-no::after{
     content:'';
     display:inline-block;
     width:32px; height:1px;
@@ -699,6 +702,7 @@
     .meta-top .left, .meta-top .right{gap: 12px}
     .meta-top span:nth-child(2), .meta-bot span:nth-child(2){display:none}
     .chapter-label{left: 16px; font-size: 9px}
+    .intermission .label .ch-no::before,.intermission .label .ch-no::after{width:20px; margin:0 10px}
     .subtitle{font-size: 18px; bottom: 14vh; width: 90%}
     .hero-loc{letter-spacing:.3em; font-size:10px; padding:8px 14px}
   }
@@ -971,7 +975,7 @@
 
 <section class="intermission" data-scene="03" data-name="CHAPTER I">
   <div class="num-big" data-rom="I">I</div>
-  <div class="label">Chapter One · How We Met</div>
+  <div class="label"><span class="ch-no">Chapter One</span><span class="ch-name">How We Met</span></div>
   <p class="quote" data-en="&quot;Our story is nothing grand. We met, we fell for each other, and we decided to make a home together.&quot;">"Chuyện của chúng mình không có gì to tát. Gặp nhau, thương nhau, rồi quyết định về chung một nhà."</p>
 </section>
 
@@ -995,7 +999,7 @@
 
 <section class="intermission" data-scene="06" data-name="CHAPTER II">
   <div class="num-big" data-rom="II">II</div>
-  <div class="label">Chapter Two · The Cast</div>
+  <div class="label"><span class="ch-no">Chapter Two</span><span class="ch-name">The Cast</span></div>
   <p class="quote" data-en="&quot;Two people, two personalities, two families. From now on, one home.&quot;">"Hai người, hai tính, hai gia đình. Từ nay chung một mái nhà."</p>
 </section>
 
@@ -1021,7 +1025,7 @@
 
 <section class="intermission" data-scene="08" data-name="CHAPTER III">
   <div class="num-big" data-rom="III">III</div>
-  <div class="label">Chapter Three · The Slow Dance</div>
+  <div class="label"><span class="ch-no">Chapter Three</span><span class="ch-name">The Slow Dance</span></div>
   <p class="quote" data-en="&quot;We don&#x27;t need much. As long as we keep holding hands.&quot;">"Không cần gì nhiều. Còn nắm tay nhau là đủ."</p>
 </section>
 
@@ -1045,7 +1049,7 @@
 
 <section class="intermission" data-scene="11" data-name="CHAPTER IV">
   <div class="num-big" data-rom="IV">IV</div>
-  <div class="label">Chapter Four · Production Notes</div>
+  <div class="label"><span class="ch-no">Chapter Four</span><span class="ch-name">Production Notes</span></div>
   <p class="quote" data-en="&quot;Our big day will feel complete with you there.&quot;">"Ngày vui của chúng mình sẽ trọn vẹn hơn khi có bạn."</p>
 </section>
 

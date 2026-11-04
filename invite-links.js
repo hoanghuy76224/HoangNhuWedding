@@ -1,4 +1,4 @@
-/* Fixed-length invitation codes. Guest names stay in Firestore, never in the URL. */
+/* Existing short invitation codes remain readable; new personalized links need no login. */
 (function (root) {
   'use strict';
   var endpoint = 'https://firestore.googleapis.com/v1/projects/vo-iu-dino-848d2/databases/(default)/documents/invites_hoangnhu';
@@ -30,20 +30,13 @@
       return name(data.fields && data.fields.name && data.fields.name.stringValue);
     },
     async create(value) {
+      // Public personalized link: no Google account or Firestore write required.
+      // Existing short ?k= links remain supported by resolve().
       var guest = name(value);
-      if (!root.getInviteToken) throw new Error('Firebase đang tải, vui lòng thử lại sau vài giây.');
-      var token = await root.getInviteToken();
-      for (var attempt = 0; attempt < 3; attempt++) {
-        var bytes = crypto.getRandomValues(new Uint8Array(9));
-        var code = btoa(String.fromCharCode.apply(null, bytes)).replace(/\+/g, '-').replace(/\//g, '_');
-        try {
-          await request(endpoint + '?documentId=' + code, {
-            method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token},
-            body: JSON.stringify({fields: {name: {stringValue: guest}}})
-          });
-          return {code: code, name: guest, link: location.origin + location.pathname + '?k=' + code};
-        } catch (error) { if (error.status !== 409 || attempt === 2) throw error; }
-      }
+      var url = new URL(location.origin + location.pathname);
+      url.searchParams.set('to', guest);
+      return {name: guest, link: url.href};
+
     }
   };
 })(window);

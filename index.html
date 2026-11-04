@@ -171,7 +171,7 @@
   }
   /* tên dâu rể chung một hàng */
   .hero-line{display:block; white-space:nowrap}
-  .personal-invite{margin:-35px auto 35px;max-width:min(88vw,600px);text-align:center;color:var(--film-warm)}
+  .personal-invite{margin:0 auto 18px;max-width:min(88vw,600px);text-align:center;color:var(--film-warm)}
   .personal-invite span{display:block;font:10px Archivo,sans-serif;letter-spacing:.22em;margin-bottom:10px}
   .personal-invite strong{display:block;font:italic clamp(20px,4vw,32px) Fraunces,serif;line-height:1.3;overflow-wrap:anywhere}
   .hero-name{
@@ -888,6 +888,10 @@
   /* ảnh bìa: khung tên gọn, nằm sát đáy để lộ mặt */
   .hero-scene .hero-title{padding:14px 14px 16px}
   .hero-scene .hero-loc{margin-bottom:14px;padding:6px 14px;font-size:9px}
+  /* Tên khách mời nằm riêng dưới nhãn phim, không được dùng margin âm. */
+  .hero-scene .personal-invite{margin:0 auto 14px;padding:0 8px;clear:both}
+  .hero-scene .personal-invite span{line-height:1.6;margin-bottom:4px}
+  .hero-scene .personal-invite strong{line-height:1.3}
   .hero-scene .hero-subtitle{margin-top:8px}
   .hero-scene .quick-nav{margin-top:12px}
   #toTop{position:fixed;right:18px;bottom:calc(11vh + 58px);z-index:9997;width:44px;height:44px;border-radius:50%;border:1px solid var(--film-warm);background:rgba(250,247,240,.92);color:var(--film-warm);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 12px rgba(60,55,45,.15)}

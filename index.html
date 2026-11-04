@@ -1467,7 +1467,7 @@
 <!-- ===== Firebase (RSVP + lưu bút) ===== -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup }
+  import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -1483,10 +1483,32 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
+  // Use redirect instead of popup for iPhone and in-app browsers.
+  window.WeddingAuth = {
+    ready: new Promise(function(resolve){ onAuthStateChanged(auth, function(user){ resolve(user); }); }),
+    async ensureSignedIn(){
+      const user = auth.currentUser || await this.ready;
+      if (user) return true;
+      const input = document.getElementById('admGuestFor');
+      if (input) try { sessionStorage.setItem('hn_invite_pending', input.value); } catch(e){}
+      await signInWithRedirect(auth, new GoogleAuthProvider());
+      return false;
+    }
+  };
   window.getInviteToken = async function(){
-    const user = auth.currentUser || (await signInWithPopup(auth, new GoogleAuthProvider())).user;
+    const user = auth.currentUser || await window.WeddingAuth.ready;
+    if (!user) throw new Error('Vui lòng đăng nhập Google để tạo link mời.');
     return user.getIdToken();
   };
+  getRedirectResult(auth).then(function(result){
+    if (result && result.user) {
+      const message = document.getElementById('admAuthNotice');
+      if (message) message.textContent = 'Đăng nhập Google thành công. Bấm Tạo link để tiếp tục.';
+    }
+  }).catch(function(error){
+    const message = document.getElementById('admAuthNotice');
+    if (message) message.textContent = 'Đăng nhập Google chưa thành công: ' + error.message + '. Hãy mở trang bằng Safari hoặc Chrome.';
+  });
   const COL = "rsvp_hoangnhu";
 
   window.WeddingDB = {
@@ -1543,6 +1565,7 @@
           <input type="text" id="admGuestFor" placeholder="Tên khách (vd: Anh Minh &amp; gia đình)" maxlength="80">
           <button class="adm-btn solid" id="admMkLink">Tạo link</button>
         </div>
+        <p id="admAuthNotice" role="status" aria-live="polite" style="margin:10px 0;color:#72552d;font-size:13px"></p>
         <div class="adm-invite-out" id="admLinkOut">
           <div class="adm-lk" id="admLinkText"></div>
           <button class="adm-btn" id="admCopyLink" style="margin-top:8px">Sao chép</button>
@@ -1701,6 +1724,9 @@
     var button=this, out=document.getElementById('admLinkOut');
     button.disabled=true; button.textContent='Đang tạo…'; out.classList.remove('on');
     try{
+      if (!window.WeddingAuth) throw new Error('Firebase đang tải. Vui lòng thử lại.');
+      var signedIn=await window.WeddingAuth.ensureSignedIn();
+      if (!signedIn) return;
       var invitation=await window.InviteLinks.create(name), link=invitation.link;
       document.getElementById('admLinkText').textContent=link; out.classList.add('on');
       document.getElementById('admCopyLink').onclick=function(){ copyText(link,this,'Sao chép'); };
@@ -1711,6 +1737,14 @@
     finally{ button.disabled=false; button.textContent='Tạo link'; }
   });
   invRender();
+  try {
+    var pendingName=sessionStorage.getItem('hn_invite_pending');
+    if(pendingName){
+      document.getElementById('admGuestFor').value=pendingName;
+      sessionStorage.removeItem('hn_invite_pending');
+      document.getElementById('admAuthNotice').textContent='Tên khách đã được giữ lại. Sau khi đăng nhập, bấm Tạo link để tiếp tục.';
+    }
+  } catch(e){}
 
   route();
 })();
